@@ -19,17 +19,23 @@ $titulo = 'Solo Notebook'
 
         <div class="productos">
           <article class="producto">
-            <img src="img/notebook2.jpg" alt="">
-            <h3>Nuestros equipos</h3>
+            <div class= img>
+              <img src="img/notebook2.jpg" alt="Equipos">
+            </div>
+            <h3>Equipos</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
           <article class="producto">
-            <img src="img/acces.jpg" alt="">
+            <div class= img>  
+              <img src="img/acces.jpg" alt="Accesorios">
+            </div>
             <h3>Accesorios</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
           <article class="producto">
-            <img src="img/repuestos.png" alt="">
+            <div class= img>
+              <img src="img/repuestos.png" alt="Repuestos">
+            </div>
             <h3>Repuestos</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
