@@ -1,9 +1,80 @@
+header{
+    overflow: hidden;
+}
+  
+main{
+    background-image:url("../img/notebook1.jpg");
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
+  
+main h2,
+main h1{
+    color: grey;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.4;
+}
+  
+main h2{
+    font-size: 40px;
+    padding-top: 200px;
+}
+  
+main h1{
+    font-size: 60px;
+}
+  
+section#notebooks{
+    text-align: center;
+    padding-top: 10px;
+    background-color: grey;
+}
+  
+div.productos{
+    width: 90%;
+    overflow: hidden;
+    margin: 40px auto 0 auto;
+}
+  
+  
+div.productos article.producto{
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+}
+  
+div.productos article.producto:nth-child(3n){
+    margin-right: 0;
+}
+  
+section#notebooks div.productos article.producto{
+    background-color: #FFF;
+    margin-bottom: 30px;
+}
+  
+section#notebooks div.productos article.producto img{
+    width: 100%;
+}
+  
+section#notebooks div.productos article.producto h3{
+    text-align: center;
+    font-size: 20px;
+}
+  
+section#notebooks div.productos article.producto p{
+    text-align: center;
+    font-style: italic;
+    color: #AAA;
+}
+  
 body {
-
+    background-color: rgb(226, 224, 224);
 }
 
-.conteiner {
-    background-color: aqua;
+.principal {
+    background-color: #AAA;
     width: 50%;
     line-height: 25px;
     margin: 0 auto;
@@ -11,11 +82,12 @@ body {
 }
 
 .registro input {
- width: 100%;
+    width: 100%;
+    border-radius: 7px;
 }
 
 .registro input:hover {
-background-color: darkgray;
+    background-color: coral;
 }
 
 .registro input:focus {
@@ -26,10 +98,13 @@ background-color: darkgray;
     margin-top: 20px;
 }
 
+.button {
+    text-align: center;
+}
+
 button {
     margin-top: 20px;
     border-radius: 10px;
     padding: 7px;
     text-align: center;
-    
 }
