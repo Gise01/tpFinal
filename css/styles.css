@@ -122,21 +122,21 @@ div.login {
     width:60%;
     max-width:500px;
     padding:100px;
-    }
+}
     
-    input[type="text"] {
+input[name="login"] {
     align-self: center;
     border:10px;
     margin-bottom:0;
-    }
+}
     
-    input[type="password"] {
+input[type="password"] {
     align-self: center;
     border:10;
     margin-bottom:0;
-    }
+}
     
-    input [type="submit"] {
+input [type="submit"] {
     background: linear-gradient(#FFDA63, #FFB940);
     align-self: center;
     height:30px;
@@ -149,23 +149,23 @@ div.login {
     margin-top: 20px;
     margin-bottom:0;
     margin-left: 60px;
-    }
+}
     
-    input [type="submit"]:hover {
+input [type="submit"]:hover {
     opacity: 1;
-    }
+}
     
-    input [type="submit"]:active {
+input [type="submit"]:active {
     transform: scale(0.9);
-    }
+}
     
-    input[type="reset-password"] {
+input[type="reset-password"] {
     align-self: center;
     border:10;
     margin-top:10px;
-    }
+}
     
-    input[type="reset-password"] {
+input[type="reset-password"] {
     background: linear-gradient(#FFDA63, #FFB940);
     align-self: center;
     text-align: center;
@@ -179,24 +179,24 @@ div.login {
     margin-top: 20px;
     margin-bottom:0;
     margin-left: 30px;
-    }
+}
     
-    input[type="reset-password"]:hover {
+input[type="reset-password"]:hover {
     opacity: 1;
-    }
+}
     
-    input[type="reset-password"]:active {
+input[type="reset-password"]:active {
     transform: scale(0.9);
-    }
+}
     
-    @media (max-width:400px){
+@media (max-width:400px){
     login {
       width:100%;
-     }
     }
+}
     
-    @media (max-width:570px){
+@media (max-width:570px){
     login {
       width:90%;
     }
-    }
+}
