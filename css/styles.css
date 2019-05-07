@@ -116,12 +116,12 @@ div.login {
     font-size: 16px;
     font-family: apple;
     font-weight: bold;
-    align-self: center;
-    margin-left:140px;
+    text-align: center;
     height: auto;
     width:60%;
+    margin-left:140px;
     max-width:500px;
-    padding:100px;
+    padding:10%;
 }
 
 input[type="login"] {
