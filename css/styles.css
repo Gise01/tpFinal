@@ -108,3 +108,95 @@ button {
     padding: 7px;
     text-align: center;
 }
+
+div.login {
+    overflow:hidden;
+    display:inline-grid;
+    float:left;
+    font-size: 16px;
+    font-family: apple;
+    font-weight: bold;
+    align-self: center;
+    margin-left:140px;
+    height: auto;
+    width:60%;
+    max-width:500px;
+    padding:100px;
+    }
+    
+    input[type="text"] {
+    align-self: center;
+    border:10px;
+    margin-bottom:0;
+    }
+    
+    input[type="password"] {
+    align-self: center;
+    border:10;
+    margin-bottom:0;
+    }
+    
+    input [type="submit"] {
+    background: linear-gradient(#FFDA63, #FFB940);
+    align-self: center;
+    height:30px;
+    width:120px;
+    border:0;
+    color:brown;
+    opacity:0.8;
+    cursor:pointer;
+    border-radius:20px;
+    margin-top: 20px;
+    margin-bottom:0;
+    margin-left: 60px;
+    }
+    
+    input [type="submit"]:hover {
+    opacity: 1;
+    }
+    
+    input [type="submit"]:active {
+    transform: scale(0.9);
+    }
+    
+    input[type="reset-password"] {
+    align-self: center;
+    border:10;
+    margin-top:10px;
+    }
+    
+    input[type="reset-password"] {
+    background: linear-gradient(#FFDA63, #FFB940);
+    align-self: center;
+    text-align: center;
+    height:30px;
+    width:180px;
+    border:0;
+    color:red;
+    opacity:0.8;
+    cursor:pointer;
+    border-radius:20px;
+    margin-top: 20px;
+    margin-bottom:0;
+    margin-left: 30px;
+    }
+    
+    input[type="reset-password"]:hover {
+    opacity: 1;
+    }
+    
+    input[type="reset-password"]:active {
+    transform: scale(0.9);
+    }
+    
+    @media (max-width:400px){
+    login {
+      width:100%;
+     }
+    }
+    
+    @media (max-width:570px){
+    login {
+      width:90%;
+    }
+    }
