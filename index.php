@@ -4,12 +4,12 @@ $titulo = 'Solo Notebook'
 
 <html>
   <head>
-    <?php require_once ('head.php') ?>
+    <?php require_once ('links/head.php') ?>
   </head>
   <body>
   <div class="container">
     <header>
-      <?php require_once ("nav.php") ?>
+      <?php require_once ("links/nav.php") ?>
     </header>
       <main>
         <h2>Bienvenidos a</h2>

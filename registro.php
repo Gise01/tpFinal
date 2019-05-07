@@ -5,12 +5,12 @@ $titulo = 'Registro'
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php require_once ('head.php') ?>
+        <?php require_once ('links/head.php') ?>
     </head>
     <body>
         <div class = 'container'>
             <Header>
-                <?php require_once ('nav.php') ?>
+                <?php require_once ('links/nav.php') ?>
             </Header>
         </div>
         <div class = 'principal'> 
