@@ -1,6 +1,18 @@
 <?php
-$titulo = 'Registro'
+$titulo = 'Registro';
 
+$paises = [
+    'Ar' => 'Argentina',
+    'Bo' => 'Bolivia',
+    'Br' => 'Brasil',
+    'Ch' => 'Chile',
+    'Co' => 'Colombia',
+    'Ec' => 'Ecuador',
+    'Pa' => 'Paraguay',
+    'Pe' => 'Peru',
+    'Ur' => 'Uruguay',
+    'Ve' => 'Venezuela',
+];
 
 ?>
 
@@ -17,33 +29,45 @@ $titulo = 'Registro'
             </Header>
         </div>
         <div class = 'principal'> 
-            <form action="registro.php" method='post'>
+            <form action="registro.php" method='post' enctype="multipart/form-data">
                 <div class = 'registro'>
                     <label for="">Nombre:*</label>
-                    <input type="text" name='nombre' required><br>
+                    <input type="text" name='nombre' value= <?= $_POST['nombre'] ?? '' ?> required><br>
                     <label for="">Apellido:*</label>
-                    <input type="text" name='apellido' required><br>
-                    <label for="">DNI:*</label>
-                    <input type="number" name="DNI" id="DNI" required><br>
-                    <label for="">Fecha de Nacimiento:*</label>
-                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" required><br>
+                    <input type="text" name='apellido' value= <?= $_POST['apellido'] ?? '' ?> required><br>
+                    <label for="">Fecha de Nacimiento:*</label> <?= errorsRegistro[0]?>
+                    <input type="date" name="fechaNacimiento" value= <?= $_POST['fechaNacimiento'] ?? '' ?> required><br>
                     <label for="">Dirección:</label>
-                    <input type="text" name= 'direccion'><br>
-                    <label for="">Localidad:</label>
-                    <input type="text" name= 'localidad'><br>
-                    <label for="">Provincia:</label>
-                    <input type="text" name= 'provincia'><br>
-                    <label for="">CP:</label>
-                    <input type="text" name= 'CP'><br>
+                    <input type="text" name= 'direccion' value= <?= $_POST['direccion'] ?? '' ?>><br>
+                    <label for="">PAIS:</label>
+                    <select name= 'pais'><br>
+                        <?php foreach ($paises as $codigo => $pais) :?>
+                            <?php if ($_POST['pais'] == $codigo) : ?>
+                                <option value = "<?= $codigo?>" selected>
+                                    <?= $pais?>
+                                </option>
+                            <?php else : ?>
+                                <option value = "<?= $codigo?>">
+                                    <?= $pais?>
+                                </option> 
+                            <?php endif; ?> 
+                        <?php endforeach; ?>
+                    </select><br>
                     <label for="">Usuario:*</label>
-                    <input type="email" placeholder= 'usuario@email.com' name='mail' required><br>
+                    <input type="email" placeholder= 'usuario@email.com' name='email' value= <?= $_POST['email'] ?? '' ?> required><br>
                     <label for="">Contraseña:*</label>
-                    <input type="password" name="contraseña" id="contraseña" required>
+                    <input type="password" name="contraseña" required>
+                    <label for="">Validar Contraseña:*</label>
+                    <input type="password" name="contraseña" required>
+                    <label for="">AVATAR:*</label>
+                    <input type="file" name="avatar" required><br>
                     <label for="">Suscripción al newsletter:</label><br>
                     <input type="radio" name="suscripcion" id="si" checked> SI 
-                    <input type="radio" name="suscripcion" id="no" > NO 
-                    <button type="submit">ENVIAR</button>
-                    <button type="reset">CANCELAR</button>
+                    <input type="radio" name="suscripcion" id="no" > NO <br>
+                    <div class= 'button'>
+                        <button type="submit">ENVIAR</button>
+                        <button type="reset">CANCELAR</button>
+                    </div>
                 </div>
             </form>
         </div>
