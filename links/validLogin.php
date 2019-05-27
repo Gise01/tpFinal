@@ -16,7 +16,7 @@ if (!empty($_POST)) {
 		$verification = password_verify($_POST['password'], $usuario['pass']); 
 	
 		if ($verification == false) {
-			$errorsLogin['password'] = "Password no corresponde";
+			$errorsLogin['password'] = "Contraseña incorrecta";
 		}
 	}
 	

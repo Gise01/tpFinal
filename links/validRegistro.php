@@ -1,9 +1,12 @@
 <?php
 
-$fecha_actual = getdate();
-$fecha_nacimiento = strtotime($_POST["fechaNacimiento"]);
-$resultado = $fecha_actual[0] - $fecha_nacimiento;
-echo $resultado;
+function fecha($fecha){
+    $fecha_actual = getdate();
+    $fecha_nacimiento = strtotime($_POST["fechaNacimiento"]);
+    $resultado = $fecha_actual[0] - $fecha_nacimiento;
+    
+};
+
 
 if (!empty($_FILES)) {
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
@@ -34,38 +37,77 @@ if (!empty($_POST)) {
         $errorsRegistro['apellido'] = 'Apellido inexistente';
     }
 
-    if ($resultado>=568090325) {
+    if (empty($_POST['fechaNacimiento'])) {
+        $errorsRegistro['fechaNaciminto'] = 'se requiere fecha de nacimiento';
+    }
+    
+    if (fecha($_POST['fechaNacimiento'])<=568090325) {
         $errorsRegistro['fechaNacimiento'] = 'Es necesario ser mayor de edad';
     }
 
+    if (empty($_POST['email'])) {
+        $errorsRegistro['email'] = 'Falta email';
+    }
 
-
-
-
-    $usuario = [
-        'nombre' => $_POST['nombre'],
-        'apellido' => $_POST['apellido'],
-        'fechaNacimiento' => $_POST['fechaNacimiento'],
-        'direccion' => $_POST['direccion'],
-        'pais' => $_POST['pais'],
-        'email' => $_POST['email'],
-        'contraseña' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
-        'avatar' => $hashedName,
-	];
-    
-    $usuarios = file_get_contents ('usuarios.json');
-    
-    $usuarios_array = json_decode ($usuarios, true);
-
-    foreach ($usuarios_array as $registro) {
-        if ($_POST['email'] != $registro['email']) {
-
-            $usuarios_array [] = $usuario;
-
-            $json_usuarios = json_encode($usuarios_array, JSON_PRETTY_PRINT);
-            
-            file_put_contents ('usuarios.json', $json_usuarios);
+    if (!empty($_POST['email'])){
+        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false){
+            $errorsRegistro['email'] = 'Email no valido';
         }
     }
+
+    if(strlen($_POST['contraseña']) < 6){
+        $errorsRegistro['contraseña'] = "La clave debe tener al menos 6 caracteres";
+    }
     
-}
+    if(strlen($_POST['contraseña']) > 16){
+        $errorsRegistro['contraseña'] = "La clave no puede tener más de 16 caracteres";
+    }
+    
+    if (!preg_match('`[a-z]`',$_POST['contraseña'])){
+        $errorsRegistro['contraseña'] = "La clave debe tener al menos una letra minúscula";
+    }
+    
+    if (!preg_match('`[A-Z]`',$_POST['contraseña'])){
+        $errorsRegistro['contraseña'] = "La clave debe tener al menos una letra mayúscula";
+    }
+    
+    if (!preg_match('`[0-9]`',$_POST['contraseña'])){
+        $errorsRegistro['contraseña'] = "La clave debe tener al menos un caracter numérico";
+    }
+
+    if (empty($_POST['val_contraseña'])){
+        $errorsRegistro['contaseña'] = "Falta validar contraseña";
+    }
+
+    if ($_POST['contraseña'] != $_POST['val_contraseña']) {
+        $errorsRegistro['contraseña'] = "Las contraseñas no coinciden";
+    }
+
+    if (empty($errorsRegistro)) {
+        $usuario = [
+            'nombre' => $_POST['nombre'],
+            'apellido' => $_POST['apellido'],
+            'fechaNacimiento' => $_POST['fechaNacimiento'],
+            'direccion' => $_POST['direccion'],
+            'pais' => $_POST['pais'],
+            'email' => $_POST['email'],
+            'contraseña' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
+            'avatar' => $hashedName,
+	    ];
+    
+        $usuarios = file_get_contents ('usuarios.json');
+    
+        $usuarios_array = json_decode ($usuarios, true);
+
+        foreach ($usuarios_array as $registro) {
+            if ($_POST['email'] != $registro['email']) {
+                $usuarios_array [] = $usuario;
+
+            }
+        }
+        $json_usuarios = json_encode($usuarios_array, JSON_PRETTY_PRINT);
+            
+        file_put_contents ('usuarios.json', $json_usuarios);
+    }
+    
+};

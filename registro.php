@@ -14,7 +14,12 @@ $paises = [
     'Ve' => 'Venezuela',
 ];
 
+require ('links/validRegistro.php');
+
+var_dump($errorsRegistro);
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,11 +37,14 @@ $paises = [
             <form action="registro.php" method='post' enctype="multipart/form-data">
                 <div class = 'registro'>
                     <label for="">Nombre:*</label>
-                    <input type="text" name='nombre' value= <?= $_POST['nombre'] ?? '' ?> required><br>
+                    <p><?= $errorsRegistro['nombre'][0] ?? '' ?></p>
+                    <input type="text" name='nombre' value= <?= $_POST['nombre'] ?? '' ?>><br>
                     <label for="">Apellido:*</label>
-                    <input type="text" name='apellido' value= <?= $_POST['apellido'] ?? '' ?> required><br>
-                    <label for="">Fecha de Nacimiento:*</label> <?= errorsRegistro[0]?>
-                    <input type="date" name="fechaNacimiento" value= <?= $_POST['fechaNacimiento'] ?? '' ?> required><br>
+                    <p><?= $errorsRegistro['apellido'][0] ?? '' ?></p>
+                    <input type="text" name='apellido' value= <?= $_POST['apellido'] ?? '' ?>><br>
+                    <label for="">Fecha de Nacimiento:*</label>
+                    <p><?= $errorsRegistro['fechaNacimiento'][0] ?? '' ?></p> 
+                    <input type="date" name="fechaNacimiento" value= <?= $_POST['fechaNacimiento'] ?? '' ?>><br>
                     <label for="">Dirección:</label>
                     <input type="text" name= 'direccion' value= <?= $_POST['direccion'] ?? '' ?>><br>
                     <label for="">PAIS:</label>
@@ -54,13 +62,15 @@ $paises = [
                         <?php endforeach; ?>
                     </select><br>
                     <label for="">Usuario:*</label>
-                    <input type="email" placeholder= 'usuario@email.com' name='email' value= <?= $_POST['email'] ?? '' ?> required><br>
+                    <p><?= $errorsRegistro['email'][0] ?? '' ?></p>
+                    <input type="email" placeholder= 'usuario@email.com' name='email' value= <?= $_POST['email'] ?? '' ?>><br>
                     <label for="">Contraseña:*</label>
-                    <input type="password" name="contraseña" required>
+                    <p><?= $errorsRegistro['contraseña'][0] ?? '' ?></p>
+                    <input type="password" name="contraseña">
                     <label for="">Validar Contraseña:*</label>
-                    <input type="password" name="contraseña" required>
+                    <input type="password" name="val_contraseña">
                     <label for="">AVATAR:*</label>
-                    <input type="file" name="avatar" required><br>
+                    <input type="file" name="avatar"><br>
                     <label for="">Suscripción al newsletter:</label><br>
                     <input type="radio" name="suscripcion" id="si" checked> SI 
                     <input type="radio" name="suscripcion" id="no" > NO <br>
