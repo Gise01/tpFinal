@@ -20,8 +20,11 @@ if (!empty($_POST)) {
 		}
 	}
 	
-	if (empty($errorsLogin)) {
-		header (location: 'register.php');
+};
+
+
+if (empty($errorsLogin)) {
+	header ('Location: tienda.php');
 	}
 
-}
+ 

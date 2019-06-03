@@ -1,5 +1,7 @@
 <?php
-$titulo = 'Login'
+$titulo = 'Login';
+
+require ('links/validLogin.php')
 ?>
 
 <!DOCTYPE html>
