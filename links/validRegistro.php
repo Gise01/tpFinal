@@ -1,13 +1,5 @@
 <?php
 
-function fecha($fecha){
-    $fecha_actual = getdate();
-    $fecha_nacimiento = strtotime($_POST["fechaNacimiento"]);
-    $resultado = $fecha_actual[0] - $fecha_nacimiento;
-    
-};
-
-
 if (!empty($_FILES)) {
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
     
@@ -19,6 +11,7 @@ if (!empty($_FILES)) {
 }
 
 $errorsRegistro = [];
+$usuario = [];
 
 if (!empty($_POST)) {
     if (empty($_POST['nombre'])) {
@@ -41,8 +34,14 @@ if (!empty($_POST)) {
         $errorsRegistro['fechaNacimiento'] = 'se requiere fecha de nacimiento';
     }
     
-    if (fecha($_POST['fechaNacimiento'])<=568090325) {
+    if (!empty($_POST['fechaNacimiento'])) {
+        $fecha_actual = getdate();
+        $fecha_nacimiento = strtotime($_POST["fechaNacimiento"]);
+        $resultado = $fecha_actual[0] - $fecha_nacimiento;
+            
+        if ($resultado<568090325) {
         $errorsRegistro['fechaNacimiento'] = 'Es necesario ser mayor de edad';
+        }
     }
 
     if (empty($_POST['email'])) {
@@ -52,6 +51,21 @@ if (!empty($_POST)) {
     if (!empty($_POST['email'])){
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false){
             $errorsRegistro['email'] = 'Email no valido';
+        }
+    }
+
+    if (!empty($_POST['email'])) {
+        
+        $usuarios = file_get_contents ('usuarios.json');
+    
+        $usuarios_array = json_decode ($usuarios, true);
+        
+        foreach ($usuarios_array as $registro) {
+            if ($_POST['email'] = $registro['email']) {
+                
+                $errorsRegistro['email'] = 'Usuario Registrado';
+                                    
+            }
         }
     }
 
@@ -93,21 +107,18 @@ if (!empty($_POST)) {
             'email' => $_POST['email'],
             'contraseña' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
             'avatar' => $hashedName,
+            'terminos' => $_POST['terminos'],
 	    ];
     
         $usuarios = file_get_contents ('usuarios.json');
     
         $usuarios_array = json_decode ($usuarios, true);
 
-        foreach ($usuarios_array as $registro) {
-            if ($_POST['email'] != $registro['email']) {
-                $usuarios_array [] = $usuario;
-
-            }
-        }
+        $usuarios_array[] = $usuario; 
+        
         $json_usuarios = json_encode($usuarios_array, JSON_PRETTY_PRINT);
             
         file_put_contents ('usuarios.json', $json_usuarios);
     }
-    
-};
+  
+}

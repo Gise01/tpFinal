@@ -16,8 +16,6 @@ $paises = [
 
 require ('links/validRegistro.php');
 
-
-
 ?>
 
 
@@ -37,13 +35,13 @@ require ('links/validRegistro.php');
             <form action="registro.php" method='post' enctype="multipart/form-data">
                 <div class = 'registro'>
                     <label for="">Nombre:*</label>
-                    <p><?= $errorsRegistro['nombre'] ?? '' ?></p>
+                    <p id="errores"><?= $errorsRegistro['nombre'] ?? '' ?></p>
                     <input type="text" name='nombre' value= <?= $_POST['nombre'] ?? '' ?>><br>
                     <label for="">Apellido:*</label>
-                    <p><?= $errorsRegistro['apellido'] ?? '' ?></p>
+                    <p id="errores"><?= $errorsRegistro['apellido'] ?? '' ?></p>
                     <input type="text" name='apellido' value= <?= $_POST['apellido'] ?? '' ?>><br>
                     <label for="">Fecha de Nacimiento:*</label>
-                    <p><?= $errorsRegistro['fechaNacimiento'] ?? '' ?></p> 
+                    <p id="errores"><?= $errorsRegistro['fechaNacimiento'] ?? '' ?></p> 
                     <input type="date" name="fechaNacimiento" value= <?= $_POST['fechaNacimiento'] ?? '' ?>><br>
                     <label for="">Dirección:</label>
                     <input type="text" name= 'direccion' value= <?= $_POST['direccion'] ?? '' ?>><br>
@@ -62,19 +60,22 @@ require ('links/validRegistro.php');
                         <?php endforeach; ?>
                     </select><br>
                     <label for="">Usuario:*</label>
-                    <p><?= $errorsRegistro['email'] ?? '' ?></p>
+                    <p id="errores"><?= $errorsRegistro['email'] ?? '' ?></p>
                     <input type="email" placeholder= 'usuario@email.com' name='email' value= <?= $_POST['email'] ?? '' ?>><br>
                     <label for="">Contraseña:*</label>
-                    <p><?= $errorsRegistro['contraseña'] ?? '' ?></p>
+                    <p id="errores"><?= $errorsRegistro['contraseña'] ?? '' ?></p>
                     <input type="password" name="contraseña">
                     <label for="">Validar Contraseña:*</label>
                     <input type="password" name="val_contraseña">
                     <label for="">AVATAR:*</label>
-                    <p><?= $errorsRegistro['avatar'] ?? '' ?></p>
+                    <p id="errores"><?= $errorsRegistro['avatar'] ?? '' ?></p>
                     <input type="file" name="avatar"><br>
                     <label for="">Suscripción al newsletter:</label><br>
-                    <input type="radio" name="suscripcion" id="si" checked> SI 
-                    <input type="radio" name="suscripcion" id="no" > NO <br>
+                    <input type="radio" name="suscripcion" value="si" checked> SI 
+                    <input type="radio" name="suscripcion" value="no" > NO <br>
+                    <label for="">He leido y <a href="links/terminos.pdf" target="_blank">acepto los términos y condiciones de uso:</a></label><br>
+                    <input type="radio" name="terminos" value="si" checked> SI 
+                    <input type="radio" name="terminos" value="no" > NO <br>
                     <div class= 'button'>
                         <button type="submit">ENVIAR</button>
                         <button type="reset">CANCELAR</button>

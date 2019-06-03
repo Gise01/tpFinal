@@ -38,3 +38,9 @@ button {
     text-align: center;
     justify-content: center;
 }
+
+#errores {
+ color: crimson;
+ font-weight: bold;
+ text-decoration: underline;
+}
