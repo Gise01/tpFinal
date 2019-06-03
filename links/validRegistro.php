@@ -38,7 +38,7 @@ if (!empty($_POST)) {
     }
 
     if (empty($_POST['fechaNacimiento'])) {
-        $errorsRegistro['fechaNaciminto'] = 'se requiere fecha de nacimiento';
+        $errorsRegistro['fechaNacimiento'] = 'se requiere fecha de nacimiento';
     }
     
     if (fecha($_POST['fechaNacimiento'])<=568090325) {
