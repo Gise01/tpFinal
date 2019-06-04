@@ -40,6 +40,7 @@ if (!empty($_POST)) {
 			if (empty($errorsValidacion)){
 				
 				$_SESSION['email'] = $usuario['email'];
+				$_SESSION['nombre'] = $usuario['nombre'];
 				
 				header ('location: comprar.php');
 			} 

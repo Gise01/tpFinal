@@ -1,3 +1,5 @@
+
+
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
@@ -8,10 +10,13 @@
         <a class="nav-link" href="comprar.php">Compra On Line</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
+        <a class="nav-link" href="equipos.php">Equipos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="registro.php">Registro</a>
+        <a class="nav-link" href="accesorios.php">Accesorios</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="repuestos.php">Repuestos</a>
       </li>
     </ul>
   </div>
