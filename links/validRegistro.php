@@ -15,23 +15,23 @@ $usuario = [];
 
 if (!empty($_POST)) {
     if (empty($_POST['nombre'])) {
-        $errorsRegistro['nombre'] = 'Falta Nombre';
+        $errorsRegistro['nombre'][] = 'Falta Nombre';
     }
 
     if (strlen($_POST['nombre'])<3) {
-        $errorsRegistro['nombre'] = 'Nombre inexistente';
+        $errorsRegistro['nombre'][] = 'Nombre inexistente';
     }
 
     if (empty($_POST['apellido'])) {
-        $errorsRegistro['apellido'] = 'Falta Apellido';
+        $errorsRegistro['apellido'][] = 'Falta Apellido';
     }
 
     if (strlen($_POST['apellido'])<3) {
-        $errorsRegistro['apellido'] = 'Apellido inexistente';
+        $errorsRegistro['apellido'][] = 'Apellido inexistente';
     }
 
     if (empty($_POST['fechaNacimiento'])) {
-        $errorsRegistro['fechaNacimiento'] = 'se requiere fecha de nacimiento';
+        $errorsRegistro['fechaNacimiento'][] = 'se requiere fecha de nacimiento';
     }
     
     if (!empty($_POST['fechaNacimiento'])) {
@@ -40,17 +40,17 @@ if (!empty($_POST)) {
         $resultado = $fecha_actual[0] - $fecha_nacimiento;
             
         if ($resultado<568090325) {
-        $errorsRegistro['fechaNacimiento'] = 'Es necesario ser mayor de edad';
+        $errorsRegistro['fechaNacimiento'][] = 'Es necesario ser mayor de edad';
         }
     }
 
     if (empty($_POST['email'])) {
-        $errorsRegistro['email'] = 'Falta email';
+        $errorsRegistro['email'][] = 'Falta email';
     }
 
     if (!empty($_POST['email'])){
         if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == false){
-            $errorsRegistro['email'] = 'Email no valido';
+            $errorsRegistro['email'][] = 'Email no valido';
         }
     }
 
@@ -63,38 +63,42 @@ if (!empty($_POST)) {
         foreach ($usuarios_array as $registro) {
             if ($_POST['email'] = $registro['email']) {
                 
-                $errorsRegistro['email'] = 'Usuario Registrado';
+                $errorsRegistro['email'][] = 'Usuario Registrado';
                                     
             }
         }
     }
 
     if(strlen($_POST['contraseña']) < 6){
-        $errorsRegistro['contraseña'] = "La clave debe tener al menos 6 caracteres";
+        $errorsRegistro['contraseña'][] = "La clave debe tener al menos 6 caracteres";
     }
     
     if(strlen($_POST['contraseña']) > 16){
-        $errorsRegistro['contraseña'] = "La clave no puede tener más de 16 caracteres";
+        $errorsRegistro['contraseña'][] = "La clave no puede tener más de 16 caracteres";
     }
     
     if (!preg_match('`[a-z]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'] = "La clave debe tener al menos una letra minúscula";
+        $errorsRegistro['contraseña'][] = "La clave debe tener al menos una letra minúscula";
     }
     
     if (!preg_match('`[A-Z]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'] = "La clave debe tener al menos una letra mayúscula";
+        $errorsRegistro['contraseña'][] = "La clave debe tener al menos una letra mayúscula";
     }
     
     if (!preg_match('`[0-9]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'] = "La clave debe tener al menos un caracter numérico";
+        $errorsRegistro['contraseña'][] = "La clave debe tener al menos un caracter numérico";
     }
 
     if (empty($_POST['val_contraseña'])){
-        $errorsRegistro['contaseña'] = "Falta validar contraseña";
+        $errorsRegistro['contaseña'][] = "Falta validar contraseña";
     }
 
     if ($_POST['contraseña'] != $_POST['val_contraseña']) {
-        $errorsRegistro['contraseña'] = "Las contraseñas no coinciden";
+        $errorsRegistro['contraseña'][] = "Las contraseñas no coinciden";
+    }
+
+    if(!isset($_POST['terminos']) || $_POST['terminos'] != 'si') {
+        $errorsRegistro['terminos'][] = 'Se deben aceptar los términos y condiciones';
     }
 
     if (empty($errorsRegistro)) {
@@ -105,8 +109,9 @@ if (!empty($_POST)) {
             'direccion' => $_POST['direccion'],
             'pais' => $_POST['pais'],
             'email' => $_POST['email'],
-            'contraseña' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
+            'password' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
             'avatar' => $hashedName,
+            'suscripcion' => $_POST['suscripcion'],
             'terminos' => $_POST['terminos'],
 	    ];
     

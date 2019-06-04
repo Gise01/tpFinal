@@ -1,7 +1,8 @@
 <?php
 $titulo = 'Login';
 
-require ('links/validLogin.php')
+require ('links/validLogin.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +20,16 @@ require ('links/validLogin.php')
         <div class = 'principal'>
             <form action="login.php" method='post'>
                 <div class = 'login'>
+                    <p id="errores"><?= $errorsValidación[0] ?? '' ?></p>
                     <label for="">Usuario:</label><br>
-                    <input type="text" placeholder="&#128272; Usuario@email.com" name="login"><br>
+                    <input type="text" placeholder="&#128272; Usuario@email.com" name="email"><br>
+                    <p id="errores"><?= $errorsLogin['email'][0] ?? '' ?></p>
                     <label for="">Contraseña:</label><br>
                     <input type="password" placeholder="&#128273; Contraseña" name="password"><br>
+                    <p id="errores"><?= $errorsLogin['password'][0] ?? '' ?></p>
                     <input type="submit" value="Ingresar"><br>
                     <input type="reset-password" value="Olvide mi contraseña">
-                    </div>
+                </div>
             </form>
         </div>
         <div class= 'container'>

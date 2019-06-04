@@ -2,29 +2,49 @@
 
 session_start();
 
-$usuarios = json_decode(file_get_contents('usuarios.json'), true);
-
 $errorsLogin = [];
+$errorsValidacion = [];
 
 if (!empty($_POST)) {
-	foreach ($usuarios as $usuario) {
-
-		if ($_POST['email'] != $usuario['email'] ) {
-		$errorsLogin['email'] = "Usuario no existe";
-		}
-
-		$verification = password_verify($_POST['password'], $usuario['pass']); 
-	
-		if ($verification == false) {
-			$errorsLogin['password'] = "Contraseña incorrecta";
-		}
-	}
-	
-};
-
-
-if (empty($errorsLogin)) {
-	header ('Location: tienda.php');
+	if (empty($_POST['email'])){
+		$errorsLogin['email'][] = 'Se necesita email';
 	}
 
- 
+	if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+		$errorsLogin['email'][] = 'El mail no es valido';
+	}
+	
+	if (empty($_POST['password'])) {
+		$errorsLogin['password'][] = 'Ingrese su contraseña';
+	}
+	
+	
+	if(empty($errorsLogin)) {
+		
+		$usuarios = json_decode(file_get_contents('usuarios.json'), true);
+		
+		foreach ($usuarios as $usuario) {
+
+			if($_POST['email'] != $usuario['email']) {
+
+				$errorsValidacion[] = 'El usuario no existe';
+			}
+			
+			$verification = password_verify($_POST['password'], $usuario['password']);
+
+			if ($verification === false) { 
+
+				$errorsValidacion[] = 'Contraseña Invalida';
+			}
+
+			if (empty($errorsValidacion)){
+				
+				$_SESSION['email'] = $usuario['email'];
+				
+				header ('location: comprar.php');
+			} 
+		}
+	}
+}
+
+	

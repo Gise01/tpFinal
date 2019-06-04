@@ -6,8 +6,9 @@
         "direccion": "algo",
         "pais": "Ar",
         "email": "arenagise1@gmail.com",
-        "contrase\u00f1a": "$2y$10$QgMNgVDeMcx9QQubIdokVO3.KrUeBhanlRg2tG0yW\/5HjOUqkLkd.",
+        "password": "$2y$10$QgMNgVDeMcx9QQubIdokVO3.KrUeBhanlRg2tG0yW\/5HjOUqkLkd.",
         "avatar": "ad7bc863acc50ad3b747c51c2f85b431.jpg",
-        "terminos": "si"
+        "newsletter" : "si",
+        "terminos": "on"
     }
 ]
