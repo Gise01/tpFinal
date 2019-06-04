@@ -69,32 +69,32 @@ if (!empty($_POST)) {
         }
     }
 
-    if(strlen($_POST['contraseña']) < 6){
-        $errorsRegistro['contraseña'][] = "La clave debe tener al menos 6 caracteres";
+    if(strlen($_POST['password']) < 6){
+        $errorsRegistro['password'][] = "La clave debe tener al menos 6 caracteres";
     }
     
-    if(strlen($_POST['contraseña']) > 16){
-        $errorsRegistro['contraseña'][] = "La clave no puede tener más de 16 caracteres";
+    if(strlen($_POST['password']) > 16){
+        $errorsRegistro['password'][] = "La clave no puede tener más de 16 caracteres";
     }
     
-    if (!preg_match('`[a-z]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'][] = "La clave debe tener al menos una letra minúscula";
+    if (!preg_match('`[a-z]`',$_POST['password'])){
+        $errorsRegistro['password'][] = "La clave debe tener al menos una letra minúscula";
     }
     
-    if (!preg_match('`[A-Z]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'][] = "La clave debe tener al menos una letra mayúscula";
+    if (!preg_match('`[A-Z]`',$_POST['password'])){
+        $errorsRegistro['password'][] = "La clave debe tener al menos una letra mayúscula";
     }
     
-    if (!preg_match('`[0-9]`',$_POST['contraseña'])){
-        $errorsRegistro['contraseña'][] = "La clave debe tener al menos un caracter numérico";
+    if (!preg_match('`[0-9]`',$_POST['password'])){
+        $errorsRegistro['password'][] = "La clave debe tener al menos un caracter numérico";
     }
 
-    if (empty($_POST['val_contraseña'])){
-        $errorsRegistro['contaseña'][] = "Falta validar contraseña";
+    if (empty($_POST['val_password'])){
+        $errorsRegistro['password'][] = "Falta validar password";
     }
 
-    if ($_POST['contraseña'] != $_POST['val_contraseña']) {
-        $errorsRegistro['contraseña'][] = "Las contraseñas no coinciden";
+    if ($_POST['password'] != $_POST['val_password']) {
+        $errorsRegistro['password'][] = "Las passwords no coinciden";
     }
 
     if(!isset($_POST['terminos']) || $_POST['terminos'] != 'si') {
@@ -109,7 +109,7 @@ if (!empty($_POST)) {
             'direccion' => $_POST['direccion'],
             'pais' => $_POST['pais'],
             'email' => $_POST['email'],
-            'password' => password_hash($_POST['contraseña'], PASSWORD_DEFAULT),
+            'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             'avatar' => $hashedName,
             'suscripcion' => $_POST['suscripcion'],
             'terminos' => $_POST['terminos'],

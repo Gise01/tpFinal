@@ -20,7 +20,7 @@ require ('links/validLogin.php');
         <div class = 'principal'>
             <form action="login.php" method='post'>
                 <div class = 'login'>
-                    <p id="errores"><?= $errorsValidación[0] ?? '' ?></p>
+                    <p id="errores"><?= $errorsValidacion[0] ?? '' ?></p>
                     <label for="">Usuario:</label><br>
                     <input type="text" placeholder="&#128272; Usuario@email.com" name="email"><br>
                     <p id="errores"><?= $errorsLogin['email'][0] ?? '' ?></p>

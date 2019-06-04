@@ -63,10 +63,10 @@ require ('links/validRegistro.php');
                     <p id="errores"><?= $errorsRegistro['email'][0] ?? '' ?></p>
                     <input type="email" placeholder= 'usuario@email.com' name='email'><br>
                     <label for="">Contraseña:*</label>
-                    <p id="errores"><?= $errorsRegistro['contraseña'][0] ?? '' ?></p>
-                    <input type="password" name="contraseña">
+                    <p id="errores"><?= $errorsRegistro['password'][0] ?? '' ?></p>
+                    <input type="password" name="password">
                     <label for="">Validar Contraseña:*</label>
-                    <input type="password" name="val_contraseña">
+                    <input type="password" name="val_password">
                     <label for="">AVATAR:*</label>
                     <p id="errores"><?= $errorsRegistro['avatar'][0] ?? '' ?></p>
                     <input type="file" name="avatar"><br>

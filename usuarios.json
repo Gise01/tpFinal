@@ -9,7 +9,7 @@
         "password": "$2y$10$QgMNgVDeMcx9QQubIdokVO3.KrUeBhanlRg2tG0yW\/5HjOUqkLkd.",
         "avatar": "ad7bc863acc50ad3b747c51c2f85b431.jpg",
         "newsletter": "si",
-        "terminos": "on"
+        "terminos": "si"
     },
     {
         "nombre": "Mauricio",
@@ -31,6 +31,30 @@
         "pais": "Ar",
         "email": "algo@algo.com",
         "password": "$2y$10$t7d6VQSA3I.y0GBz21e\/Yun1JqCBvkH4cTnrqsBeJ8zAiIsWiiNii",
+        "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
+    },
+    {
+        "nombre": "Algo",
+        "apellido": "algo",
+        "fechaNacimiento": "1983-10-01",
+        "direccion": "zarazas 1234",
+        "pais": "Ar",
+        "email": "algo@gmail.com",
+        "password": "$2y$10$lxKkW5PTbAS2k\/huSHuHiuxxSp4ZOmkh.AeWYel8fDEvBBbb\/MAcS",
+        "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
+    },
+    {
+        "nombre": "Ale",
+        "apellido": "Villa",
+        "fechaNacimiento": "1987-01-01",
+        "direccion": "zarazas 1234",
+        "pais": "Ar",
+        "email": "info@alezvi.com.ar",
+        "password": "$2y$10$9Xk7ECbScykhfh73H6IzYeuVUhncJcoJMRITQ3xwnieSJl3OrT1l.",
         "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
         "suscripcion": "si",
         "terminos": "si"
