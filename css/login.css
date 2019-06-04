@@ -25,11 +25,11 @@ input[type="password"] {
 
 input[type="submit"] {
     width:120px;
-    background: linear-gradient(#FFDA63, #FFB940);
+    background: grey;
     align-self: center;
     height:30px;
     border:0;
-    color:brown;
+    color:black;
     opacity:0.8;
     cursor:pointer;
     border-radius:20px;
@@ -45,13 +45,13 @@ input[type="submit"]:active {
 }
 
 input[type="reset-password"] {
-    background: linear-gradient(#FFDA63, #FFB940);
+    background: grey;
     align-self: center;
     text-align: center;
     height:30px;
     width:180px;
     border:0;
-    color:red;
+    color:black;
     opacity:0.8;
     cursor:pointer;
     border-radius:20px;

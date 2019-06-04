@@ -1,5 +1,3 @@
-
-
 section#notebooks{
     text-align: center;
     padding-top: 10px;
@@ -22,7 +20,6 @@ div.productos article.producto{
 div.productos article.producto:nth-child(3n){
     margin-right: 0;
 }
-
 
 section#notebooks div.productos article.producto{
     background-color: #FFF;
