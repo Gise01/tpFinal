@@ -8,7 +8,31 @@
         "email": "arenagise1@gmail.com",
         "password": "$2y$10$QgMNgVDeMcx9QQubIdokVO3.KrUeBhanlRg2tG0yW\/5HjOUqkLkd.",
         "avatar": "ad7bc863acc50ad3b747c51c2f85b431.jpg",
-        "newsletter" : "si",
+        "newsletter": "si",
         "terminos": "on"
+    },
+    {
+        "nombre": "Mauricio",
+        "apellido": "Koller",
+        "fechaNacimiento": "1987-12-23",
+        "direccion": "zarazas 1234",
+        "pais": "Ar",
+        "email": "mauricio@gmail.com",
+        "password": "$2y$10$Q8oNrbWutgaWrq.Vmb5JHeTBLe8qMx5OUle4ZCWrXGtS.Ekfl8fAK",
+        "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
+    },
+    {
+        "nombre": "Mauricio",
+        "apellido": "Koller",
+        "fechaNacimiento": "1987-12-23",
+        "direccion": "zarazas",
+        "pais": "Ar",
+        "email": "algo@algo.com",
+        "password": "$2y$10$t7d6VQSA3I.y0GBz21e\/Yun1JqCBvkH4cTnrqsBeJ8zAiIsWiiNii",
+        "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
     }
 ]

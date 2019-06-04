@@ -61,7 +61,7 @@ if (!empty($_POST)) {
         $usuarios_array = json_decode ($usuarios, true);
         
         foreach ($usuarios_array as $registro) {
-            if ($_POST['email'] = $registro['email']) {
+            if ($_POST['email'] === $registro['email']) {
                 
                 $errorsRegistro['email'][] = 'Usuario Registrado';
                                     

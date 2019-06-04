@@ -61,7 +61,7 @@ require ('links/validRegistro.php');
                     </select><br>
                     <label for="">Usuario:*</label>
                     <p id="errores"><?= $errorsRegistro['email'][0] ?? '' ?></p>
-                    <input type="email" placeholder= 'usuario@email.com' name='email' value= <?= $_POST['email'] ?? '' ?>><br>
+                    <input type="email" placeholder= 'usuario@email.com' name='email'><br>
                     <label for="">Contraseña:*</label>
                     <p id="errores"><?= $errorsRegistro['contraseña'][0] ?? '' ?></p>
                     <input type="password" name="contraseña">
