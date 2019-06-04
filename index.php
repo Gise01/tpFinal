@@ -14,8 +14,16 @@ $titulo = 'Solo Notebook'
     </header>
       <main>
         <h2>Bienvenidos a</h2>
-        <h1>Solo Notebooks</h1>
+        <h1>Solo Notebooks</h1><br><br>
+        <h3>Somos Mercado Lider</h3>
       </main> <br>
+       <br>
+      <div class="maps">
+        <h3>Retira tu compra en nuestro showroom</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d345.87095720430415!2d-58.55580588809013!3d-34.54284076147505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcba00b3f01957%3A0x9adb73843a544523!2sRep%C3%BAblica+5372%2C+Villa+Ballester%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1559616125057!5m2!1ses!2sar" width="600" height="400" frameborder="0" style="border:0" allowfullscreen></iframe><br><br>
+        <h3>Tambien enviamos a domicilio</h3>
+      </div>
+
 
   </div>
   <div class= 'container'>

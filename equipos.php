@@ -1,11 +1,11 @@
 <?php
-$titulo = 'Comprar productos';
+$titulo = 'Equipos';
 ?>
 
 <html>
   <head>
     <?php require_once ('links/head.php') ?>
-    <link rel="stylesheet" href="css/comprar.css">
+    <link rel="stylesheet" href="css/equipos.css">
   </head>
   <body>
   <div class="container">
@@ -18,23 +18,44 @@ $titulo = 'Comprar productos';
         <div class="productos">
           <article class="producto">
             <div class= img>
-              <img src="img/notebook2.jpg" alt="Equipos">
+              <img src="img/notebook2.jpg" alt="Apple">
             </div>
-            <a href="equipos.php">Equipos</a>
+            <h3>Apple</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
           <article class="producto">
             <div class= img>
-              <img src="img/acces.jpg" alt="Accesorios">
+              <img src="img/notebook2.jpg" alt="Dell">
             </div>
-            <h3>Accesorios</h3>
+            <h3>Dell</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
           <article class="producto">
             <div class= img>
-              <img src="img/repuestos.png" alt="Repuestos">
+              <img src="img/notebook2.jpg" alt="HP">
             </div>
-            <h3>Repuestos</h3>
+            <h3>HP</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
+          </article>
+          <article class="producto">
+            <div class= img>
+              <img src="img/notebook2.jpg" alt="Lenovo">
+            </div>
+            <h3>Lenovo</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
+          </article>
+          <article class="producto">
+            <div class= img>
+              <img src="img/notebook2.jpg" alt="Samsung">
+            </div>
+            <h3>Samsung</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
+          </article>
+          <article class="producto">
+            <div class= img>
+              <img src="img/notebook2.jpg" alt="Sony">
+            </div>
+            <h3>Sony</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente beatae dolorem, magnam quia odio! Error.</p>
           </article>
         </div>
