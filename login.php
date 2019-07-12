@@ -1,12 +1,61 @@
 <?php
 $titulo = 'Login';
 
+session_start();
+
 //require ('links/validLogin.php');
-require_once ('links/conexion.php');
+require ('src/config.php');
 require_once ('src/Validador/LoginValidador.php');
 require_once ('src/Entidades/Usuario.php');
 
+if(!empty($_POST)){
+    $validador = new LoginValidador($_POST);
+    $validador->validate();
+    
+    if($validador->estaValidado()){
+  
+        $usuario = new Usuario;
+        $usuario->setEmail($_POST['email']);
+        $usuario->setPassword($_POST['password']);
+        
+        try {
 
+            $pdo = DB::getInstance();
+
+            $email=$usuario->getEmail();
+            $pass=$usuario->getPassword();
+            
+            var_dump($email);
+
+            $sql = 'SELECT nombre, email, `password` FROM Usuarios';
+
+            $stmt = $pdo->prepare($sql);
+            
+            $stmt->execute();
+
+            $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+            foreach ($clientes as $cliente) {
+                if ($email === $cliente['email'] && password_verify($pass, $cliente['password'])) {
+                    $_SESSION['email'] = $cliente['email'];
+                    $_SESSION['nombre'] = $cliente['nombre'];
+                    break;
+
+                    }
+            }
+
+            var_dump($clientes);
+            var_dump($pass);
+            var_dump($cliente);
+        
+        //header ('location: comprar.php');
+
+        } catch (Exception $e){
+            echo $e->getMessage();
+            echo 'El usuario o la contraseñas estan incorrectas';
+        }
+    }
+}
 
 ?>
 
@@ -25,13 +74,13 @@ require_once ('src/Entidades/Usuario.php');
         <div class = 'principal'>
             <form action="login.php" method='post'>
                 <div class = 'login'>
-                    <p id="errores"><?= $errorsValidacion[0] ?? '' ?></p>
+                    
                     <label for="">Usuario:</label><br>
                     <input type="text" placeholder="&#128272; Usuario@email.com" name="email"><br>
-                    <p id="errores"><?= $errorsLogin['email'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('email');}?></p>
                     <label for="">Contraseña:</label><br>
                     <input type="password" placeholder="&#128273; Contraseña" name="password"><br>
-                    <p id="errores"><?= $errorsLogin['password'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('password');}?></p>
                     <input type="submit" value="Ingresar"><br>
                     <input type="reset-password" value="Olvide mi contraseña">
                 </div>

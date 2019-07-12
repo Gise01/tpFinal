@@ -1,5 +1,7 @@
 <?php
 $titulo = 'Comprar productos';
+
+session_start();
 ?>
 
 <html>

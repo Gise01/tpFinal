@@ -15,7 +15,7 @@ $paises = [
 ];
 
 //require_once ('links/validRegistro.php');
-require_once ('links/conexion.php');
+require ('src/config.php');
 require_once ('src/Validador/RegistroValidador.php');
 require_once ('src/Entidades/Usuario.php');
 
@@ -40,7 +40,7 @@ if(!empty($_POST)){
       
         try {
 
-        $pdo= new PDO($dsn, $user, $password, $opt);
+        $pdo = DB::getInstance();
         
         $sql = 'INSERT INTO Usuarios (nombre, apellido, fechaNacimiento, direccion, pais, email, `password`, avatar, suscripcion, terminos)
             VALUES (:nombre, :apellido, :fechaNacimiento, :direccion, :pais, :email, :password, :avatar, :suscripcion, :terminos)';

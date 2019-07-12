@@ -1,9 +1,9 @@
 <?php
 
-require_once('links/conexion.php');
+require ('src/config.php');
 
 try {
-    $pdo= new PDO($dsn, $user, $password, $opt);
+    $pdo = DB::getInstance();
     
         $usuarios= 'CREATE TABLE Usuarios(
             id INT AUTO_INCREMENT,
@@ -13,7 +13,7 @@ try {
             direccion VARCHAR(80) NULL,
             pais VARCHAR(40) NOT NULL,
             email VARCHAR(50) NOT NULL,
-            `password` VARCHAR(100) NOT NULL,
+            `password` VARCHAR(255) NOT NULL,
             avatar VARCHAR(100) NOT NULL,
             suscripcion VARCHAR(2) NOT NULL,
             terminos VARCHAR(2) NOT NULL, 
@@ -21,12 +21,30 @@ try {
             
             PRIMARY KEY (id),
             UNIQUE (email)
-        )ENGINE=InnoDB DEFAULT CHARSET=latin1';
+        )';
 
-    $pdo->execute($usuarios);
+    $stmt = $pdo->prepare($usuarios);
+    $stmt->execute();
+
+    $marcas= 'CREATE TABLE Marcas(
+        id TINYINT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(60) NOT NULL,
+        image_URL VARCHAR(100)
+    )';
+    
+    $stmt = $pdo->prepare($marcas);
+    $stmt->execute();
+    
+    $categorias= 'CREATE TABLE Categorias(
+        id TINYINT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(60) NOT NULL 
+    )';
+    
+    $stmt = $pdo->prepare($categorias);
+    $stmt->execute();
 
     $productos= 'CREATE TABLE Productos(
-        codigo INT PRIMARY KEY UNIQUE NOT NULL,
+        codigo INT PRIMARY KEY NOT NULL,
         nombre VARCHAR(50) NOT NULL,
         precio DECIMAL NOT NULL,
         stock DECIMAL NOT NULL,
@@ -35,69 +53,52 @@ try {
         marca_id INT,
         categoria_id INT,
         last_update TIMESTAMP,
-        descuento DECIMAL,
+        descuento DECIMAL
 
-        FOREIGN KEY (marca_id) REFERENCES Marcas(id),
-        FOREIGN KEY (categoria_id) REFERENCES Categorias(id)
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
+    )';
 
-    $pdo->execute($productos);
-
-    $marcas= 'CREATE TABLE Marcas(
-        id TINYINT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(60) NOT NULL,
-        image_URL VARCHAR(100)
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
-
-    $pdo->execute($marcas);
-
-    $categorias= 'CREATE TABLE Categorias(
-        id TINYINT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(60) NOT NULL 
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
-
-    $pdo->execute($categorias);
+    $stmt = $pdo->prepare($productos);
+    $stmt->execute();
 
     $payment= 'CREATE TABLE Payment(
         id TINYINT AUTO_INCREMENT PRIMARY KEY,
         nombre VARCHAR(60) NOT NULL  
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
+    )';
 
-    $pdo->execute($payment);
+    $stmt = $pdo->prepare($payment);
+    $stmt->execute();
+
+    $descuento= 'CREATE TABLE Descuento(
+        id TINYINT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(60),
+        valor DECIMAL   
+    )';
+    
+    $stmt = $pdo->prepare($descuento);
+    $stmt->execute();
+    
+    $carrito= 'CREATE TABLE Carrito(
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        cantidad DECIMAL NOT NULL,
+        producto_id INT
+         
+    )';
+    
+    $stmt = $pdo->prepare($carrito);
+    $stmt->execute();
 
     $venta= 'CREATE TABLE Venta(
         id INT AUTO_INCREMENT PRIMARY KEY,
         usuario_id INT,
         carrito_id INT,
         monto DECIMAL,
-        descuento_id TINYINT,
-        
-        FOREIGN KEY (descuento_id) REFERENCES Descuentos(id),
-        FOREIGN KEY (usuario_id) REFERENCES Usuarios(id),
-        FOREIGN KEY (carrito_id) REFERENCES Carrito(id)
+        descuento_id TINYINT
 
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
+    )';
 
-    $pdo->execute($venta);
+    $stmt = $pdo->prepare($venta);
+    $stmt->execute();
 
-    $descuento= 'CREATE TABLE Descuento(
-        id TINYINT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(60),
-        valor DECIMAL   
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
-
-    $pdo->execute($descuento);
-
-    $carrito= 'CREATE TABLE Carrito(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        cantidad DECIMAL NOT NULL,
-        producto_id INT, 
-        
-        FOREIGN KEY (producto_id) REFERENCES Productos(codigo)  
-    )ENGINE=InnoDB DEFAULT CHARSET=latin1';
-
-    $pdo->execute($carrito);
-    
     header ('location: conversionJson.php');
     
 } catch (Exception $e) {

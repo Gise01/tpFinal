@@ -3,29 +3,37 @@
 require_once ('Validador.php');
 
 class LoginValidador extends Validador{
+    
     protected $user;
     
     public function __construct(array $dato){
         $this->user = $dato;
     }
 
-    private function 
+    private function isEmail(){
+        if (empty($this->user['email'])) {
+            $this->errors['email'] = 'Se necesita email';
+        }
+    }
+
+    private function validezEmail(){
+        if (!empty($this->user['email'])){
+            if (!filter_var($this->user['email'], FILTER_VALIDATE_EMAIL)){
+                $this->errors['email'] = 'Email no valido';
+            }
+        }
+    }
+
+    private function isPassword(){
+        if (empty($this->user['password'])) {
+            $this->errors['password'] = 'Ingrese su contraseña';
+        }
+    }
     
     public function validate() {
-        $this->isNombre();
-        $this->validezNombre();
-        $this->isApellido();
-        $this->validezApellido();
-        $this->isFechaNac();
-        $this->mayorEdad();
         $this->isEmail();
         $this->validezEmail();
-        $this->largoPass();
-        $this->seguridadPassLetra();
-        $this->seguridadPassNum();
-        $this->validezPass();
-        $this->coincidenPass();
-        $this->isTerminos();
+        $this->isPassword();
     }
 
     public function getErrors(){

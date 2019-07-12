@@ -1,9 +1,9 @@
 <?php
 
-require_once('links/conexion.php');
+require ('src/config.php');
 
 try{
-    $pdo= new pdo($dsn, $user, $password, $opt);
+    $pdo = DB::getInstance();
 
     $usuarios = file_get_contents ('usuarios.json');
     $usuariosArray = json_decode ($usuarios, true);

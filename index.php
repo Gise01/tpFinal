@@ -1,14 +1,10 @@
 <?php
 $titulo = 'Solo Notebook';
 
-require_once('links/conexion.php');
-
-?>
-
-<?php
+require ('src/config.php');
   
   try {
-    $pdo= new PDO($dsn, $user, $password, $opt);?>
+    $pdo = DB::getInstance();?>
     
       <html>
         <head>
@@ -43,8 +39,8 @@ require_once('links/conexion.php');
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>       
       </html>
 <?php 
-} catch (\Throwable $th) {
-    $th->getMessage();?>
+} catch (Exception $e) {
+    $e->getMessage();?>
       <html>
         <head>
           <link rel="stylesheet" href="css/index.css">
