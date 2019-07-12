@@ -1,6 +1,6 @@
 <?php
 
-if (!empty($_FILES)) {
+/*if (!empty($_FILES)) {
     $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
     
     $hashedName = md5($_FILES['avatar']['name']) . '.' . $ext;
@@ -126,4 +126,4 @@ if (!empty($_POST)) {
         file_put_contents ('usuarios.json', $json_usuarios);
     }
   
-}
+}*/

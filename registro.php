@@ -14,10 +14,61 @@ $paises = [
     'Ve' => 'Venezuela',
 ];
 
-require ('links/validRegistro.php');
+//require_once ('links/validRegistro.php');
+require_once ('links/conexion.php');
+require_once ('src/Validador/RegistroValidador.php');
+require_once ('src/Entidades/Usuario.php');
+
+
+if(!empty($_POST)){
+    $validador = new RegistroValidador($_POST);
+    $validador->validate();
+    
+    if($validador->estaValidado()){
+  
+        $usuario = new Usuario;
+        $usuario->setNombre($_POST['nombre']);
+        $usuario->setApellido($_POST['apellido']);
+        $usuario->setFechaNacimiento($_POST['fechaNacimiento']);
+        $usuario->setDireccion($_POST['direccion']);
+        $usuario->setPais($_POST['pais']);
+        $usuario->setEmail($_POST['email']);
+        $usuario->setPassword($_POST['password']);
+        $usuario->setAvatar($usuario->uploadAvatar());
+        $usuario->setSuscripcion($_POST['suscripcion']);
+        $usuario->setTerminos($_POST['terminos']);
+      
+        try {
+
+        $pdo= new PDO($dsn, $user, $password, $opt);
+        
+        $sql = 'INSERT INTO Usuarios (nombre, apellido, fechaNacimiento, direccion, pais, email, `password`, avatar, suscripcion, terminos)
+            VALUES (:nombre, :apellido, :fechaNacimiento, :direccion, :pais, :email, :password, :avatar, :suscripcion, :terminos)';
+
+        $stmt = $pdo->prepare($sql);
+        
+        $stmt->bindValue('nombre', $usuario->getNombre());
+        $stmt->bindValue('apellido', $usuario->getApellido());
+        $stmt->bindValue('fechaNacimiento', $usuario->getFechaNacimiento());
+        $stmt->bindValue('direccion', $usuario->getDireccion());
+        $stmt->bindValue('pais', $usuario->getPais());
+        $stmt->bindValue('email', $usuario->getEmail());
+        $stmt->bindValue('password', $usuario->getPassword());
+        $stmt->bindValue('avatar', $usuario->getAvatar());
+        $stmt->bindValue('suscripcion', $usuario->getSuscripcion());
+        $stmt->bindValue('terminos', $usuario->getTerminos());
+
+        $stmt->execute();
+
+        header ('location: login.php');
+
+        } catch (Exception $e){
+            echo 'El usuario ya existe' . $e->getMessage();
+        }
+    }
+}
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,13 +86,13 @@ require ('links/validRegistro.php');
             <form action="registro.php" method='post' enctype="multipart/form-data">
                 <div class = 'registro'>
                     <label for="">Nombre:*</label>
-                    <p id="errores"><?= $errorsRegistro['nombre'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('nombre');}?></p>
                     <input type="text" name='nombre' value= <?= $_POST['nombre'] ?? '' ?>><br>
                     <label for="">Apellido:*</label>
-                    <p id="errores"><?= $errorsRegistro['apellido'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('apellido');}?></p>
                     <input type="text" name='apellido' value= <?= $_POST['apellido'] ?? '' ?>><br>
                     <label for="">Fecha de Nacimiento:*</label>
-                    <p id="errores"><?= $errorsRegistro['fechaNacimiento'][0] ?? '' ?></p> 
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('fechaNacimiento');}?></p> 
                     <input type="date" name="fechaNacimiento" value= <?= $_POST['fechaNacimiento'] ?? '' ?>><br>
                     <label for="">Dirección:</label>
                     <input type="text" name= 'direccion' value= <?= $_POST['direccion'] ?? '' ?>><br>
@@ -60,10 +111,10 @@ require ('links/validRegistro.php');
                         <?php endforeach; ?>
                     </select><br>
                     <label for="">Usuario:*</label>
-                    <p id="errores"><?= $errorsRegistro['email'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('email');}?></p>
                     <input type="email" placeholder= 'usuario@email.com' name='email'><br>
                     <label for="">Contraseña:*</label>
-                    <p id="errores"><?= $errorsRegistro['password'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('password');}?></p>
                     <input type="password" name="password">
                     <label for="">Validar Contraseña:*</label>
                     <input type="password" name="val_password">
@@ -75,7 +126,7 @@ require ('links/validRegistro.php');
                     <input type="radio" name="suscripcion" value="no" > NO <br><br>
                     <input type="checkbox" name="terminos" value = "si" > 
                     <label for="">He leido y acepto los <a href="links/terminos.pdf" target="_blank">términos y condiciones de uso</a></label><br>
-                    <p id="errores"><?= $errorsRegistro['terminos'][0] ?? '' ?></p>
+                    <p id="errores"><?php if(isset($validador)) {echo $validador->getError('terminos');}?></p>
                    
                     <div class= 'button'>
                         <button type="submit">ENVIAR</button>

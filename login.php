@@ -1,7 +1,12 @@
 <?php
 $titulo = 'Login';
 
-require ('links/validLogin.php');
+//require ('links/validLogin.php');
+require_once ('links/conexion.php');
+require_once ('src/Validador/LoginValidador.php');
+require_once ('src/Entidades/Usuario.php');
+
+
 
 ?>
 
