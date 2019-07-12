@@ -52,8 +52,8 @@ try {
         image_URL VARCHAR(100),
         marca_id INT,
         categoria_id INT,
-        last_update TIMESTAMP,
-        descuento DECIMAL
+        descuento_id DECIMAL,
+        last_update TIMESTAMP        
 
     )';
 
@@ -78,7 +78,7 @@ try {
     $stmt->execute();
     
     $carrito= 'CREATE TABLE Carrito(
-        id INT AUTO_INCREMENT PRIMARY KEY,
+        id INT PRIMARY KEY,
         cantidad DECIMAL NOT NULL,
         producto_id INT
          

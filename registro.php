@@ -15,7 +15,7 @@ $paises = [
 ];
 
 //require_once ('links/validRegistro.php');
-require ('src/config.php');
+require_once ('src/config.php');
 require_once ('src/Validador/RegistroValidador.php');
 require_once ('src/Entidades/Usuario.php');
 
@@ -25,7 +25,7 @@ if(!empty($_POST)){
     $validador->validate();
     
     if($validador->estaValidado()){
-  
+       
         $usuario = new Usuario;
         $usuario->setNombre($_POST['nombre']);
         $usuario->setApellido($_POST['apellido']);
@@ -42,23 +42,9 @@ if(!empty($_POST)){
 
         $pdo = DB::getInstance();
         
-        $sql = 'INSERT INTO Usuarios (nombre, apellido, fechaNacimiento, direccion, pais, email, `password`, avatar, suscripcion, terminos)
-            VALUES (:nombre, :apellido, :fechaNacimiento, :direccion, :pais, :email, :password, :avatar, :suscripcion, :terminos)';
+        $storage = Factory::get('storages', 'db');
 
-        $stmt = $pdo->prepare($sql);
-        
-        $stmt->bindValue('nombre', $usuario->getNombre());
-        $stmt->bindValue('apellido', $usuario->getApellido());
-        $stmt->bindValue('fechaNacimiento', $usuario->getFechaNacimiento());
-        $stmt->bindValue('direccion', $usuario->getDireccion());
-        $stmt->bindValue('pais', $usuario->getPais());
-        $stmt->bindValue('email', $usuario->getEmail());
-        $stmt->bindValue('password', $usuario->getPassword());
-        $stmt->bindValue('avatar', $usuario->getAvatar());
-        $stmt->bindValue('suscripcion', $usuario->getSuscripcion());
-        $stmt->bindValue('terminos', $usuario->getTerminos());
-
-        $stmt->execute();
+        $usuario->save($storage);
 
         header ('location: login.php');
 

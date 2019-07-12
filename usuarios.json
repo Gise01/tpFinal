@@ -58,5 +58,29 @@
         "avatar": "936ee2f529b912319c1ec9d138846d3f.jpg",
         "suscripcion": "si",
         "terminos": "si"
+    },
+    {
+        "nombre": "Otro",
+        "apellido": "otro",
+        "fechaNacimiento": "1983-10-01",
+        "direccion": "otro",
+        "pais": "Ar",
+        "email": "otro@gmail.com",
+        "password": "$2y$10$y4yg0ulQwkdAxCN0I6jbt.\/5AKHPM1u0yhIMLmoLknlmSoHcHzfYW",
+        "avatar": "uploads\/fe6ef055b85f88b0ee01f74c4d4aa3da.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
+    },
+    {
+        "nombre": "unomas",
+        "apellido": "unomas",
+        "fechaNacimiento": "1983-10-01",
+        "direccion": "algo",
+        "pais": "Ar",
+        "email": "unomas@gmail.com",
+        "password": "$2y$10$Nxi20aUqfTBAHsVm\/vsleeYIGh.FxdZFLPdhh1x8JcTeDwFSkre4m",
+        "avatar": "uploads\/fe6ef055b85f88b0ee01f74c4d4aa3da.jpg",
+        "suscripcion": "si",
+        "terminos": "si"
     }
 ]

@@ -16,39 +16,30 @@ if(!empty($_POST)){
   
         $usuario = new Usuario;
         $usuario->setEmail($_POST['email']);
-        $usuario->setPassword($_POST['password']);
-        
+                
         try {
 
             $pdo = DB::getInstance();
 
             $email=$usuario->getEmail();
-            $pass=$usuario->getPassword();
+            $pass=$_POST['password'];
             
-            var_dump($email);
-
-            $sql = 'SELECT nombre, email, `password` FROM Usuarios';
+            $sql = 'SELECT nombre, email, `password` FROM Usuarios WHERE email=:email';
 
             $stmt = $pdo->prepare($sql);
+
+            $stmt->bindValue('email', $usuario->getEmail());
             
             $stmt->execute();
 
-            $clientes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
             
-            foreach ($clientes as $cliente) {
-                if ($email === $cliente['email'] && password_verify($pass, $cliente['password'])) {
-                    $_SESSION['email'] = $cliente['email'];
-                    $_SESSION['nombre'] = $cliente['nombre'];
-                    break;
-
-                    }
+            if (password_verify($pass, $cliente['password'])) {
+                $_SESSION['email'] = $cliente['email'];
+                $_SESSION['nombre'] = $cliente['nombre'];
             }
-
-            var_dump($clientes);
-            var_dump($pass);
-            var_dump($cliente);
-        
-        //header ('location: comprar.php');
+                    
+        header ('location: comprar.php');
 
         } catch (Exception $e){
             echo $e->getMessage();

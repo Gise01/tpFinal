@@ -128,7 +128,7 @@ class RegistroValidador extends Validador{
     } 
 
     public function estaValidado(){
-        return empty($validador->errors);
+        return empty($this->errors);
     }
 
 }

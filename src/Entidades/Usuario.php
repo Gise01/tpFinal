@@ -1,5 +1,7 @@
 <?php
 
+require_once ('Factory.php');
+
 class Usuario{
     
     protected $id;
@@ -111,5 +113,32 @@ class Usuario{
 
     public function getTerminos() : string {
         return $this->terminos;
+    }
+
+    public function save(StorageInterface $storage) {
+
+        $storage->getSource();
+
+        if ($storage instanceof DBStorage) {
+            $sql = 'INSERT INTO Usuarios (nombre, apellido, fechaNacimiento, direccion, pais, email, `password`, avatar, suscripcion, terminos)
+            VALUES (:nombre, :apellido, :fechaNacimiento, :direccion, :pais, :email, :password, :avatar, :suscripcion, :terminos)';
+
+            $storage->setQuery($sql);
+        }
+
+        $storage->insertar([
+            'nombre' => $this->getNombre(),
+            'apellido' => $this->getApellido(),
+            'fechaNacimiento' => $this->getFechaNacimiento(),
+            'direccion' => $this->getDireccion(),
+            'pais' => $this->getPais(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+            'avatar' => $this->getAvatar(),
+            'suscripcion' => $this->getSuscripcion(),
+            'terminos' => $this->getTerminos(),
+        ]);
+                
+        
     }
 }
