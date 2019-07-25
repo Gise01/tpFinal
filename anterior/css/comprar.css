@@ -1,0 +1,45 @@
+
+
+section#notebooks{
+    text-align: center;
+    padding-top: 10px;
+    background-color: grey;
+}
+
+div.productos{
+    width: 90%;
+    overflow: hidden;
+    margin: 40px auto 0 auto;
+}
+
+
+div.productos article.producto{
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+}
+
+div.productos article.producto:nth-child(3n){
+    margin-right: 0;
+}
+
+
+section#notebooks div.productos article.producto{
+    background-color: #FFF;
+    margin-bottom: 30px;
+}
+
+section#notebooks div.productos article.producto div.img img{
+    width: 100%;
+}
+
+section#notebooks div.productos article.producto h3{
+    text-align: center;
+    font-size: 18px;
+}
+
+section#notebooks div.productos article.producto p{
+    text-align: center;
+    font-style: italic;
+    color: #AAA;
+}
