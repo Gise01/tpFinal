@@ -19,15 +19,23 @@ Route::bind('product', function($id){
     return App\Product::find($id);
 });
 
+Route::get('/', 'IndexController@index')->name('inicio');
+
 Auth::routes();
+
+Route::get('/brands', 'BrandController@index')->name('marcas');
+Route::get('/brands/{id}', 'BrandController@show')->name('marca_productos');
 
 Route::get('/cart', 'CartController@show')->name('carrito');
 Route::get('/cart/add/{product}', 'CartController@add')->name('agregar');
 Route::get('/cart/delete/{product}', 'CartController@delete')->name('eliminar');
 Route::get('/cart/remove}', 'CartController@remove')->name('vaciar');
 Route::get('/cart/update/', 'CartController@update')->name('update');
+Route::get('/cart/payment/', 'CartController@payment')->name('pago');
 
-Route::get('/', 'IndexController@index')->name('inicio');
+Route::get('/categories', 'CategoryController@index')->name('categorias');
+Route::get('/categories/{id}', 'CategoryController@show')->name('categoria_productos');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/products', 'ProductController@index')->name('productos');

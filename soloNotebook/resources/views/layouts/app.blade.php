@@ -29,7 +29,7 @@
         <div id="app">
             
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
+                
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <img src="{{ asset('storage/logo.png') }}" width="150" class="d-inline-block align-top" alt="logo solo notebook">
                     </a>
@@ -47,10 +47,10 @@
                                 <a class="nav-link" href="{{ route('productos') }}">Productos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Categrias</a>
+                                <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Marcas</a>
+                                <a class="nav-link" href="{{ route('marcas') }}">Marcas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('carrito') }}"><i class="fa fa-shopping-cart"></i>Carrito</a>
@@ -96,7 +96,7 @@
                             @endguest
                         </ul>
                     </div>
-                </div>
+                
             </nav>
         </div>
         

@@ -19,6 +19,10 @@
         
         <div class="product-info">
             <p>{{$product->description}}</p>
+
+            <p>{{$product->category->name}}</p>
+
+            <p>{{$product->brand->name}}</p>
         
             <p>Precio: ${{ $product->price }}</p>
             
