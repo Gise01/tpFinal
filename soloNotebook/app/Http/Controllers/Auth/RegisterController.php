@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -49,9 +50,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:3','max:255'],
+            'last_name' => ['required', 'string', 'min:3','max:255'],
+            'birthdate' => ['required', 'date', 'before_or_equal:'.Carbon::now()->subYears(18)->format("Y-m-d")],
+            'address' => ['required', 'string', 'min:3','max:255'],
+            'country'=> ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['required', 'image'],
+            'suscription' => ['required'],
+            'terms' => ['required'], 
+
         ]);
     }
 
@@ -65,8 +74,15 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'last_name' => $date['last_name'],
+            'birthdate' => $data['birthdate'],
+            'address' => $data['address'],
+            'country' => $data['country'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar' => $data['avatar'],
+            'suscription' => $data['suscription'],
+            'terms' => $data['terms'],
         ]);
     }
 }

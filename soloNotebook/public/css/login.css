@@ -1,0 +1,79 @@
+div.principal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.login {
+    overflow:hidden;
+    font-size: 16px;
+    font-family: apple;
+    font-weight: bold;
+    text-align: center;
+    height: 400px;
+    width:100%;
+    margin: 20% auto;
+    max-width:500px;
+    padding:10%;
+}
+
+input[type="password"] {
+    margin: 0 auto;
+}
+
+input[type="submit"] {
+    width:120px;
+    background: grey;
+    align-self: center;
+    height:30px;
+    border:0;
+    color:black;
+    opacity:0.8;
+    cursor:pointer;
+    border-radius:20px;
+    margin: 8% auto;
+}
+
+input[type="submit"]:hover {
+    opacity: 1;
+}
+
+input[type="submit"]:active {
+    transform: scale(0.9);
+}
+
+input[type="reset-password"] {
+    background: grey;
+    align-self: center;
+    text-align: center;
+    height:30px;
+    width:180px;
+    border:0;
+    color:black;
+    opacity:0.8;
+    cursor:pointer;
+    border-radius:20px;
+    margin: 0 auto;
+}
+
+input[type="reset-password"]:hover {
+    opacity: 1;
+}
+
+input[type="reset-password"]:active {
+    transform: scale(0.9);
+}
+
+@media (max-width:400px){
+    login {
+      width:100%;
+    }
+}
+
+@media (max-width:570px){
+    login {
+        width:90%;
+    }
+}

@@ -1,0 +1,44 @@
+
+main{
+    background-image:url("../img/notebook1.jpg");
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+}
+
+h3{
+  color:black;
+
+}
+
+main h2,
+main h1
+{
+    color: grey;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.4;
+}
+
+main h2{
+    font-size: 40px;
+    padding-top: 200px;
+}
+
+main h1{
+    font-size: 60px;
+}
+
+main h3{
+  color: grey;
+  opacity: 0.4;
+  text-align: center;
+}
+
+}
+div.maps{
+  height: auto;
+  width: auto;
+  background-size: cover;
+  background-position: center;
+}
