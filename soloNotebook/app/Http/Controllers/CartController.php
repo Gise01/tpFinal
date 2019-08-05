@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cart;
+use App\Product;
 
 class CartController extends Controller
 {
@@ -11,9 +13,9 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct()
     {
-        //
+        if(!\Session::has('cart')) \Session::put('cart', array());
     }
 
     /**
@@ -23,18 +25,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        //       
     }
 
     /**
@@ -43,9 +34,12 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $cart = \Session::get('cart');
+        $total = $this->total(); 
+        return view('tienda.cart', compact('cart', 'total'));
+        
     }
 
     /**
@@ -54,9 +48,23 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function add(Product $product)
     {
-        //
+        $cart = \Session::get('cart');
+        $product->quantity = 1;
+        $cart[$product->id] = $product;
+        \Session::put('cart', $cart);
+
+        return redirect()->route('productos');
+    }
+
+    public function delete (Product $product)
+    {
+        $cart = \Session::get('cart');
+        unset($cart[$product->id]);
+        \Session::put('cart', $cart);
+
+        return redirect()->route('carrito');
     }
 
     /**
@@ -66,9 +74,30 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Product $product, $quantity)
     {
-        //
+        $cart = \Session::get('cart');
+        $cart[$product->id]->quantity = $quantity;
+        \Session::put('cart', $cart);
+
+        return redirect()->route('carrito');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    private function total()
+    {
+        $cart = \Session::get('cart');
+        $total = 0;
+        foreach ($cart as $item){
+            $total += $item->price * $item->quantity;
+        };
+        
+        return $total;
     }
 
     /**
@@ -77,8 +106,10 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove()
     {
-        //
+        \Session::forget('cart');
+        
+        return redirect()->route('carrito');
     }
 }

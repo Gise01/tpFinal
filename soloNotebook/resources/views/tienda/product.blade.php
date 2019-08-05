@@ -5,25 +5,29 @@
 <div class="container">
 
 
-    <h2>Catalogo</h2>
+    <h2>Detalle del producto</h2>
     
-    @foreach ($products as $product)
-
-        <div class="product">
+    <div class="products-block">
         
-        <h4>{{$product->name}}</h4>
         <img src="{{ asset('storage/notebook.jpg') }}" alt="" width='200'>
 
+    </div>
+
+    <div class="products-block">
+        
+        <h4>{{$product->name}}</h4>
+        
         <div class="product-info">
+            <p>{{$product->description}}</p>
         
             <p>Precio: ${{ $product->price }}</p>
+            
             <button><a href="{{ route('agregar', $product->id) }}">Comprar</a></button>
-            <button><a href="{{ route('detalle', $product->id) }}">Detalles</a></button>
         </div>
+        
+    </div>
 
-        </div>
-
-    @endforeach
+    <button><a href="{{ route('productos') }}">Regresar</a></button>    
 
 </div>
 
