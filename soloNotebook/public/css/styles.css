@@ -31,3 +31,11 @@ div#product{
     display:flex;
     justify-content: center;
 }
+
+/*------- Admin -------*/
+
+#card-body-admin{
+    display: flex;
+    justify-content: space-around;
+}
+

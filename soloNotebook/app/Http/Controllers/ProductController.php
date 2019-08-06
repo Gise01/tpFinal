@@ -35,20 +35,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function agregar(Request $request)
+    
+     public function agregar(Request $request)
     {
-        $producto = new Product();
-        $producto->name = $request['name'];
-        $producto->sku = $request['sku'];
-        $producto->price = $request['price'];
-        $producto->description = $request['description'];
-        $producto->stock = $request['stock'];
-        $producto->image = $request[''];
-        $producto->category = $request['category'];
-        $producto->brand = $request['brand'];
-
-        $producto->save();
-        return redirect('productos');
+        //
     }
 
     /**

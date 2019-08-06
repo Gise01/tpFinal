@@ -50,4 +50,13 @@ Route::get('/products/{id}', 'ProductController@show')->name('detalle');
 */
 
 Route::get('/admin', 'Admin\IndexAdminController@index')->name('inicioadmin');
+
+Route::get('/admin/marcas', 'Admin\BrandsAdminController@index')->name('marcasadmin');
+
+Route::get('/admin/categorias', 'Admin\CategoriesAdminController@index')->name('categoriasadmin');
+
 Route::get('/admin/productos', 'Admin\ProductsAdminController@index')->name('productosadmin');
+Route::get('/admin/productos/agregar', 'Admin\ProductsAdminController@share')->name('productosadminget');
+Route::post('/admin/productos/agregar', 'Admin\ProductsAdminController@show')->name('productosadminpost');
+Route::get('/admin/productos/borrar/{id}', 'Admin\ProductsAdminController@predelete')->name('borrarproductoadminget');
+Route::post('/admin/productos/borrar/{id}', 'Admin\ProductsAdminController@delete')->name('borrarproductoadminpost');

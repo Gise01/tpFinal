@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
 
 class ProductsAdminController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductsAdminController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::paginate(9);
+        return view('admin.productsadmin', compact('products'));
     }
 
     /**
@@ -22,9 +24,9 @@ class ProductsAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function share()
     {
-        //
+        return view('admin.addproduct');
     }
 
     /**
@@ -33,9 +35,20 @@ class ProductsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show(Request $request)
     {
-        //
+        $producto = new Product();
+        $producto->name = $request['name'];
+        $producto->sku = $request['sku'];
+        $producto->price = $request['price'];
+        $producto->description = $request['description'];
+        $producto->stock = $request['stock'];
+        $producto->image = $request[''];
+        $producto->category = $request['category'];
+        $producto->brand = $request['brand'];
+
+        $producto->save();
+        return redirect('productosadmin');
     }
 
     /**
@@ -44,9 +57,21 @@ class ProductsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    
+    public function predelete($id)
     {
-        //
+        $product = Product::find($id);
+        return view('admin.delproductadmin', compact('product'));
+        
+    }
+    
+    public function delete(Request $request)
+    {
+        $id = $request['id'];
+        $producto = Product::find($id);
+        $producto->delete();
+
+        return redirect('productosadmin');
     }
 
     /**

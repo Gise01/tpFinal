@@ -19,6 +19,7 @@
                 <div class="card-body">     
                 
                     <p>Precio: ${{ $product->price }}</p>
+                    
                     <a class="btn btn-warning" href="{{ route('agregar', $product->id) }}" role="button">Comprar</a>
                     <a class="btn btn-primary" href="{{ route('detalle', $product->id) }}" role="button">Detalles</a>
                 </div>
