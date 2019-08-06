@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(9);
         return view('tienda.products', compact('products'));
     }
 
@@ -35,9 +35,20 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function agregar(Request $request)
     {
-        //
+        $producto = new Product();
+        $producto->name = $request['name'];
+        $producto->sku = $request['sku'];
+        $producto->price = $request['price'];
+        $producto->description = $request['description'];
+        $producto->stock = $request['stock'];
+        $producto->image = $request[''];
+        $producto->category = $request['category'];
+        $producto->brand = $request['brand'];
+
+        $producto->save();
+        return redirect('productos');
     }
 
     /**
@@ -72,7 +83,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Product::find($request['id']);
+        $producto->name = $request['name'];
+        $producto->sku = $request['sku'];
+        $producto->price = $request['price'];
+        $producto->description = $request['description'];
+        $producto->stock = $request['stock'];
+        
     }
 
     /**

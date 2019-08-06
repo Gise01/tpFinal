@@ -8,11 +8,26 @@
 }
    
 body {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
 }
 
+/*------- Footer -------*/
 
 footer{ 
     margin: 5% auto;
+    background-color: rgb(20, 20, 20)
 }
 
+/*------- Products -------*/
+
+div#products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+div#product{
+    display:flex;
+    justify-content: center;
+}

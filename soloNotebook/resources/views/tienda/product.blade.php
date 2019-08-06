@@ -2,36 +2,27 @@
 
 @section('content')
 
-<div class="container">
 
-
-    <h2>Detalle del producto</h2>
+<div class="text-center">
+    <h2>Detalle del Producto</h2>
+</div>
     
-    <div class="products-block">
-        
-        <img src="{{ asset('storage/notebook.jpg') }}" alt="" width='200'>
-
-    </div>
-
-    <div class="products-block">
-        
+<div id="product">
+    
+    <div class="card text-center" style="width: 18rem;">
+        <img src="{{ asset('storage/notebook.jpg') }}" class="card-img-top" alt="">
         <h4>{{$product->name}}</h4>
-        
-        <div class="product-info">
+
+        <div class="card-body">
             <p>{{$product->description}}</p>
-
             <p>{{$product->category->name}}</p>
-
             <p>{{$product->brand->name}}</p>
-        
             <p>Precio: ${{ $product->price }}</p>
             
-            <button><a href="{{ route('agregar', $product->id) }}">Comprar</a></button>
+            <a class="btn btn-warning" href="{{ route('agregar', $product->id) }}" role="button">Comprar</a>
+            <a class="btn btn-primary" href="{{ route('productos') }}" role="button">Regresar</a>   
         </div>
-        
     </div>
-
-    <button><a href="{{ route('productos') }}">Regresar</a></button>    
 
 </div>
 

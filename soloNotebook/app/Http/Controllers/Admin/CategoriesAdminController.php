@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Category;
 
-class CategoryController extends Controller
+class CategoriesAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(9);
-        return view('tienda.categories', compact('categories'));
+        return view('admin.categoriesadmin', compact('categories'));
     }
 
     /**
@@ -47,10 +48,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::find($id);
-        $products = $category->product;
-        return view('tienda.products', compact('products'));
-        
+        //
     }
 
     /**

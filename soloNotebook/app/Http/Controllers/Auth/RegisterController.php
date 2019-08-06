@@ -80,7 +80,7 @@ class RegisterController extends Controller
             'country' => $data['country'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $data['avatar'],
+            'avatar' => basename($data->file('avatar')->storage('public')),
             'suscription' => $data['suscription'],
             'terms' => $data['terms'],
         ]);

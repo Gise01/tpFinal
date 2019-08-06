@@ -2,27 +2,33 @@
 
 @section('content')
 
-<div class="container">
-
-
-    <h2>Catálogo según Categoría</h2>
+<<div class="text-center">
+    <h2>Catálogo por categorías</h2>
+</div>
     
+<div class="container">
+    <div id="categories">
+
     @foreach ($categories as $category)
 
-        <div class="category">
+        <div id="category-foreach" class="card text-center" style="width: 18rem;">
+            <img src="{{ asset('storage/acces.jpg') }}" class="card-img-top" alt="">
         
-        <h4>{{$category->name}}</h4>
-        <img src="{{ asset('storage/acces.jpg') }}" alt="" width='200'>
+            <h3>{{$category->name}}</h3>
 
-        <div class="product-info">
-        
-            <button><a href="{{ route('categoria_productos', $category->id) }}">Detalles</a></button>
+            <div class="card-body">
+                <p>${{ $category->description }}</p>
+                <a class="btn btn-primary" href="{{ route('categoria_productos', $category->id) }}" role="button">Detalles</a>
+            </div>
             
         </div>
 
-        </div>
-
+        
     @endforeach
+        
+    </div>
+
+    {{$categories->links()}}
 
 </div>
 

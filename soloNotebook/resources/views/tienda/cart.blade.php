@@ -5,7 +5,7 @@
 <div class="container">
     @if(count($cart))
 
-    <button><a href="{{ route('vaciar') }}"><i class="fa fa-trash"></i></a></button>
+    <a class="btn btn-danger" href="{{ route('vaciar') }}" role="button"><i class="fa fa-trash"></i>Vaciar Carrito</a>
 
     <div class="table-responsive">
         <table class="table table-hover">
@@ -51,8 +51,8 @@
         
         <h4><span>Total: $ {{ $total }}</span></h4>
         
-        <button><a href="{{ route('productos') }}">Seguir Comprando</a></button>
-        <button><a href="{{ route('carrito') }}">Finalizar compra</a></button> 
+        <a class="btn btn-warning" href="{{ route('productos') }}" role="button">Seguir Comprando</a>
+        <a class="btn btn-primary" href="{{ route('carrito') }}" role="button">Finalizar compra</a>
     </div>
     @else
     <h3>Su carrito esta vacio</h3>
