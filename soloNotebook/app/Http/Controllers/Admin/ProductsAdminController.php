@@ -80,7 +80,15 @@ class ProductsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    
+    public function predelete($id)
+    {
+        $product = Product::find($id);
+        return view('admin.editproductadmin', compact('product'));
+        
+    }
+    
+     public function edit($id)
     {
         //
     }

@@ -59,8 +59,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'avatar' => ['required', 'image'],
             'suscription' => ['required'],
-            'terms' => ['required'], 
-
+            'terms' => ['required'],
         ]);
     }
 
@@ -74,15 +73,16 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'last_name' => $date['last_name'],
+            'last_name' => $data['last_name'],
             'birthdate' => $data['birthdate'],
             'address' => $data['address'],
             'country' => $data['country'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => basename($data->file('avatar')->storage('public')),
+            'avatar' => basename(request()->file('avatar')->store('public/avatars')),
             'suscription' => $data['suscription'],
             'terms' => $data['terms'],
+            'role_id' => 1
         ]);
     }
 }

@@ -7,7 +7,7 @@
 </div>
 
 <div class="text-center">
-    <form action="{{ route('borrarproductoadminpost') }}" method="post">
+    <form action="{{ route('borrarproductoadminpost', $product->id) }}" method="post">
     {{csrf_field()}}
         <input type="hidden" name="id" value="{{ $product->id }}" >
         <button type="sumit" class="btn btn-danger"><i class="fa fa-trash-o"></i>Eliminar</button>   
