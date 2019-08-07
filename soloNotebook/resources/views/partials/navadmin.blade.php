@@ -13,7 +13,7 @@
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-          <a class="nav-link" href="{{ route('inicio') }}">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{{ route('inicioadmin') }}">Home <span class="sr-only">(current)</span></a>
           </li>
           
       </ul>
@@ -39,13 +39,13 @@
         @else
 
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('productos') }}">Productos</a>
+              <a class="nav-link" href="{{ route('productosadmin') }}">Productos</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('categorias') }}">Categorias</a>
+              <a class="nav-link" href="{{ route('categoriasadmin') }}">Categorias</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{ route('marcas') }}">Marcas</a>
+              <a class="nav-link" href="{{ route('marcasadmin') }}">Marcas</a>
           </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

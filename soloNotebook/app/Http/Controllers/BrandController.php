@@ -49,7 +49,7 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         $products = $brand->product;
-        return view('tienda.products', compact('products'));
+        return view('tienda.brandProducts', compact('products', 'brand'));
     }
 
     /**

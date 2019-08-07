@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('partials.head')
+@include('partials.head')
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <div class="container">

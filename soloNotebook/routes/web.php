@@ -48,15 +48,24 @@ Route::get('/products/{id}', 'ProductController@show')->name('detalle');
 |
 |
 */
+Route::group([
+    'prefix'=>'admin', 
+    'namespace'=>'Admin', 
+    'middleware'=>['auth', 'role:1']], 
+    function(){
 
-Route::get('/admin', 'Admin\IndexAdminController@index')->name('inicioadmin');
+Route::get('/', 'IndexAdminController@index')->name('inicioadmin');
 
-Route::get('/admin/marcas', 'Admin\BrandsAdminController@index')->name('marcasadmin');
+Route::get('/marcas', 'BrandsAdminController@index')->name('marcasadmin');
 
-Route::get('/admin/categorias', 'Admin\CategoriesAdminController@index')->name('categoriasadmin');
+Route::get('/categorias', 'CategoriesAdminController@index')->name('categoriasadmin');
 
-Route::get('/admin/productos', 'Admin\ProductsAdminController@index')->name('productosadmin');
-Route::get('/admin/productos/agregar', 'Admin\ProductsAdminController@share')->name('productosadminget');
-Route::post('/admin/productos/agregar', 'Admin\ProductsAdminController@show')->name('productosadminpost');
-Route::get('/admin/productos/borrar/{id}', 'Admin\ProductsAdminController@predelete')->name('borrarproductoadminget');
-Route::post('/admin/productos/borrar/{id}', 'Admin\ProductsAdminController@delete')->name('borrarproductoadminpost');
+Route::get('/productos', 'ProductsAdminController@index')->name('productosadmin');
+Route::get('/productos/agregar', 'ProductsAdminController@share')->name('productosadminget');
+Route::post('/productos/agregar', 'ProductsAdminController@show')->name('productosadminpost');
+Route::get('/productos/borrar/{id}', 'ProductsAdminController@predelete')->name('borrarproductoadminget');
+Route::post('/productos/borrar/{id}', 'ProductsAdminController@delete')->name('borrarproductoadminpost');
+Route::get('/productos/editar/{id}', 'ProductsAdminController@predit')->name('editarproductoadminget');
+Route::post('/productos/editar/{id}', 'ProductsAdminController@edit')->name('editarrproductoadminpost');
+
+});
