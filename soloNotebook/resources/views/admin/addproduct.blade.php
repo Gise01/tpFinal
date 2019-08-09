@@ -101,8 +101,10 @@
                             <label for="category" class="col-md-4 col-form-label text-md-right">Categoria</label>
 
                             <div class="col-md-6">
-                                <select id="category" class="form-control @error('category') is-invalid @enderror" name="category" value="{{ old('category') }}" required autocomplete="category" autofocus>
-                                    <option value="ejemplo">prueba</option>
+                                <select id="category" name="category_id" class="form-control @error('category') is-invalid @enderror" required autofocus>
+                                    @foreach ($categories as $category)
+                                    <option name="category_id" value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
                                 </select>
                                 @error('category')
                                     <span class="invalid-feedback" role="alert">
@@ -113,13 +115,32 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="marca" class="col-md-4 col-form-label text-md-right">Marca</label>
+                            <label for="brand" class="col-md-4 col-form-label text-md-right">Marca</label>
 
                             <div class="col-md-6">
-                                <select id="marca" class="form-control @error('marca') is-invalid @enderror" name="marca" value="{{ old('marca') }}" required autocomplete="marca" autofocus>
-                                    <option value="ejemplo">prueba</option>
+                                <select id="brand" name="brand_id" class="form-control @error('brand') is-invalid @enderror" required autofocus>
+                                    @foreach ($brands as $brand)
+                                    <option name="brand_id" value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
                                 </select>
-                                @error('marca')
+                                @error('brand')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="discount" class="col-md-4 col-form-label text-md-right">Descuento</label>
+
+                            <div class="col-md-6">
+                                <select id="discount" name="discount_id" class="form-control @error('discount') is-invalid @enderror" required autofocus>
+                                    @foreach ($discounts as $discount)
+                                    <option name="discount_id" value="{{ $discount->id }}">{{ $discount->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('discount')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -132,9 +153,9 @@
                                 <button type="submit" class="btn btn-primary">
                                     Enviar
                                 </button>
-                                <button type="reset" class="btn btn-primary"><a href="{{ route('productosadmin') }}">Cancelar</a>
+                                <a class="btn btn-primary" href="{{ route('productosadmin') }}" role="button">Cancelar</a>
                                     
-                                </button>
+                                
                             </div>
                         </div>
                     </form>

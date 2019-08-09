@@ -10,7 +10,7 @@
                 <div class="card-header"></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('productosadminpost') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('editarrproductoadminpost', $product->id) }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -97,15 +97,64 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="category" class="col-md-4 col-form-label text-md-right">Categoria</label>
+
+                            <div class="col-md-6">
+                                <select id="category" name="category_id" class="form-control @error('category') is-invalid @enderror" required autofocus>
+                                    @foreach ($categories as $category)
+                                    <option name="category_id" value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="brand" class="col-md-4 col-form-label text-md-right">Marca</label>
+
+                            <div class="col-md-6">
+                                <select id="brand" name="brand_id" class="form-control @error('brand') is-invalid @enderror" required autofocus>
+                                    @foreach ($brands as $brand)
+                                    <option name="brand_id" value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('brand')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="discount" class="col-md-4 col-form-label text-md-right">Descuento</label>
+
+                            <div class="col-md-6">
+                                <select id="discount" name="discount_id" class="form-control @error('discount') is-invalid @enderror" required autofocus>
+                                    @foreach ($discounts as $discount)
+                                    <option name="discount_id" value="{{ $discount->id }}">{{ $discount->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('discount')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
                         
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Enviar
                                 </button>
-                                <button type="reset" class="btn btn-primary"><a href="{{ route('productosadmin') }}">Cancelar</a>
-                                    
-                                </button>
+                                <a class="btn btn-primary" href="{{ route('productosadmin') }}" role="button">>Cancelar</a>
+                                
                             </div>
                         </div>
                     </form>

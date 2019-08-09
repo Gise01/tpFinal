@@ -17,7 +17,7 @@
 
                 <div class="card-body">     
                                  
-                    <a class="btn btn-success" href="{{ route('editarproductoadminget', $product->id) }} role="button"><i class="fa fa-pencil-square-o"></i>Editar</a>
+                    <a class="btn btn-success" href="{{ route('editarproductoadminget', $product->id) }}" role="button"><i class="fa fa-pencil-square-o"></i>Editar</a>
                     <a class="btn btn-danger" href="{{ route('borrarproductoadminget', $product->id) }}" role="button"><i class="fa fa-trash-o"></i>Eliminar</a>
                 </div>
             

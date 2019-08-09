@@ -57,8 +57,20 @@ Route::group([
 Route::get('/', 'IndexAdminController@index')->name('inicioadmin');
 
 Route::get('/marcas', 'BrandsAdminController@index')->name('marcasadmin');
+Route::get('/marcas/agregar', 'BrandsAdminController@share')->name('marcasadminget');
+Route::post('/marcas/agregar', 'BrandsAdminController@show')->name('marcasadminpost');
+Route::get('/marcas/borrar/{id}', 'BrandsAdminController@predelete')->name('borrarmarcasadminget');
+Route::post('/marcas/borrar/{id}', 'BrandsAdminController@delete')->name('borrarmarcasadminpost');
+Route::get('/marcas/editar/{id}', 'BrandsAdminController@predit')->name('editarmarcasadminget');
+Route::post('/marcas/editar/{id}', 'BrandsAdminController@edit')->name('editarrmarcasadminpost');
 
 Route::get('/categorias', 'CategoriesAdminController@index')->name('categoriasadmin');
+Route::get('/categorias/agregar', 'CategoriesAdminController@share')->name('categoriasadminget');
+Route::post('/categorias/agregar', 'CategoriesAdminController@show')->name('categoriasadminpost');
+Route::get('/categorias/borrar/{id}', 'CategoriesAdminController@predelete')->name('borrarcategoriaadminget');
+Route::post('/categorias/borrar/{id}', 'CategoriesAdminController@delete')->name('borrarcategoriaadminpost');
+Route::get('/categorias/editar/{id}', 'CategoriesAdminController@predit')->name('editarcategoriaadminget');
+Route::post('/categorias/editar/{id}', 'CategoriesAdminController@edit')->name('editarrcategoriaadminpost');
 
 Route::get('/productos', 'ProductsAdminController@index')->name('productosadmin');
 Route::get('/productos/agregar', 'ProductsAdminController@share')->name('productosadminget');

@@ -12,7 +12,7 @@
         @foreach ($products as $product)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">
-                <img src="{{ asset('storage/icononotebook.png') }}" class="card-img-top" alt="">
+                <a href="{{ route('detalle', $product->id) }}"><img src="{{ asset('storage/icononotebook.png') }}" class="card-img-top" alt=""></a>
                 
                 <h3>{{$product->name}}</h3>
 

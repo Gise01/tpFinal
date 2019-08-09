@@ -18,16 +18,16 @@ footer{
     background-color: rgb(20, 20, 20)
 }
 
-/*------- Products -------*/
+/*------- Customers -------*/
 
-div#products{
+div#products, div#categories, div#brands{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
 }
 
-div#product{
+div#product, {
     display:flex;
     justify-content: center;
 }
@@ -38,4 +38,6 @@ div#product{
     display: flex;
     justify-content: space-around;
 }
-
+ a{
+     text-decoration: none;
+ }

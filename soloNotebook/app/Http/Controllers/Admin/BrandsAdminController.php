@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use App\Category;
+use App\Brand;
 
 class BrandsAdminController extends Controller
 {
@@ -14,7 +17,8 @@ class BrandsAdminController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(9);
+        return view('admin.brandsadmin', compact('brands'));
     }
 
     /**
@@ -22,9 +26,9 @@ class BrandsAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function share()
     {
-        //
+        return view('admin.addbrand');
     }
 
     /**
@@ -33,20 +37,15 @@ class BrandsAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $brand = new Brand();
+        $brand->name = $request['name'];
+        $brand->description = $request['description'];
+        $brand->image = basename(request()->file('image')->store('public/brands'));
+                
+        $brand->save();
+        return redirect('admin/marcas');
     }
 
     /**
@@ -55,9 +54,10 @@ class BrandsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function predit($id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('admin.editbrandadmin', compact('brand'));
     }
 
     /**
@@ -67,9 +67,16 @@ class BrandsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function edit(Request $request, $id)
     {
-        //
+        $brand = Brand::find($id);
+       
+        $brand->name = $request['name'];
+        $brand->description = $request['description'];
+        $brand->image = basename(request()->file('image')->store('public/brands'));
+        
+        $brand->save();
+        return redirect('admin/marcas');
     }
 
     /**
@@ -78,8 +85,24 @@ class BrandsAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function predelete($id)
     {
-        //
+        $brand = Brand::find($id);
+        return view('admin.delbrandadmin', compact('brand'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request)
+    {
+        $id = $request['id'];
+        $brand = Brand::find($id);
+        $brand->delete();
+
+        return redirect('admin/marcas');
     }
 }

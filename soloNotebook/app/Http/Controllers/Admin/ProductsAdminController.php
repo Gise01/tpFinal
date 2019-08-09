@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Category;
+use App\Brand;
+use App\Discount;
 
 class ProductsAdminController extends Controller
 {
@@ -26,7 +29,11 @@ class ProductsAdminController extends Controller
      */
     public function share()
     {
-        return view('admin.addproduct');
+        $categories = Category::all();
+        $brands = Brand::all();
+        $discounts = Discount::all();
+       
+        return view('admin.addproduct', compact('categories', 'brands', 'discounts'));
     }
 
     /**
@@ -37,18 +44,19 @@ class ProductsAdminController extends Controller
      */
     public function show(Request $request)
     {
-        $producto = new Product();
-        $producto->name = $request['name'];
-        $producto->sku = $request['sku'];
-        $producto->price = $request['price'];
-        $producto->description = $request['description'];
-        $producto->stock = $request['stock'];
-        $producto->image = $request[''];
-        $producto->category = $request['category'];
-        $producto->brand = $request['brand'];
-
-        $producto->save();
-        return redirect('productosadmin');
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->sku = $request['sku'];
+        $product->price = $request['price'];
+        $product->description = $request['description'];
+        $product->stock = $request['stock'];
+        $product->image = basename(request()->file('image')->store('public/products'));
+        $product->category_id = $request['category_id'];
+        $product->brand_id = $request['brand_id'];
+        $product->discount_id = $request['discount_id'];
+        
+        $product->save();
+        return redirect('admin/productos');
     }
 
     /**
@@ -71,7 +79,7 @@ class ProductsAdminController extends Controller
         $producto = Product::find($id);
         $producto->delete();
 
-        return redirect('productosadmin');
+        return redirect('admin/productos');
     }
 
     /**
@@ -84,13 +92,29 @@ class ProductsAdminController extends Controller
     public function predit($id)
     {
         $product = Product::find($id);
-        return view('admin.editproductadmin', compact('product'));
+        $categories = Category::all();
+        $brands = Brand::all();
+        $discounts = Discount::all();
         
+        return view('admin.editproductadmin', compact('product', 'categories', 'brands', 'discounts'));
     }
     
-     public function edit($id)
+     public function edit(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+       
+        $product->name = $request['name'];
+        $product->sku = $request['sku'];
+        $product->price = $request['price'];
+        $product->description = $request['description'];
+        $product->stock = $request['stock'];
+        $product->image = basename(request()->file('image')->store('public/products'));
+        $product->category_id = $request['category_id'];
+        $product->brand_id = $request['brand_id'];
+        $product->discount_id = $request['discount_id'];
+
+        $product->save();
+        return redirect('admin/productos');
     }
 
     /**

@@ -3,7 +3,7 @@
 
 <head>
 @include('partials.head')
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
 </head>
 
 <div class="container">

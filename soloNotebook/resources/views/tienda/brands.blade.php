@@ -12,7 +12,7 @@
     @foreach ($brands as $brand)
 
         <div id="product-foreach" class="card text-center" style="width: 18rem;">
-            <img src="{{ asset('storage/hp.png') }}" class="card-img-top" alt="">
+           <a href="{{ route('marca_productos', $brand->id) }}"><img src="{{ asset('storage/hp.png') }}" class="card-img-top" alt=""></a>
             
             <h3>{{$brand->name}}</h3>
 

@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
 use App\Category;
+use App\Brand;
+use App\Discount;
 
 class CategoriesAdminController extends Controller
 {
@@ -24,9 +27,9 @@ class CategoriesAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function share()
     {
-        //
+        return view('admin.addcategory');
     }
 
     /**
@@ -35,9 +38,15 @@ class CategoriesAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function show(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request['name'];
+        $category->description = $request['description'];
+        $category->image = basename(request()->file('image')->store('public/categories'));
+                
+        $category->save();
+        return redirect('admin/categoriesadmin');
     }
 
     /**
@@ -46,9 +55,10 @@ class CategoriesAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function predit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.editcategoryadmin', compact('category'));
     }
 
     /**
@@ -57,9 +67,16 @@ class CategoriesAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+       
+        $category->name = $request['name'];
+        $category->description = $request['description'];
+        $category->image = basename(request()->file('image')->store('public/categories'));
+        
+        $category->save();
+        return redirect('admin/categorias');
     }
 
     /**
@@ -69,9 +86,10 @@ class CategoriesAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function predelete($id)
     {
-        //
+        $category = Category::find($id);
+        return view('admin.delcategoryadmin', compact('category'));
     }
 
     /**
@@ -80,8 +98,12 @@ class CategoriesAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Request $request)
     {
-        //
+        $id = $request['id'];
+        $category = Category::find($id);
+        $category->delete();
+
+        return redirect('admin/categorias');
     }
 }
