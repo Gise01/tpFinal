@@ -11,6 +11,7 @@
         @foreach ($products as $product)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">
+                
                 <div class="productsAdmin">
                     <img src="{{ Storage::url($product->image) }}" class="card-img-top img-fluid img-thumbnail" alt="Responsive image">
                 </div>

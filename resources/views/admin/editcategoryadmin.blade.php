@@ -48,7 +48,7 @@
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" autocomplete="image" autofocus>
 
                                 <div>
-                                    <img src="{{ Storage::url($category->image) }}" alt="50" sizes="" srcset="">
+                                    <img id="imageCategory" src="{{ Storage::url($category->image) }}" alt="" sizes="" srcset="">
                                 </div>
 
                                 @error('image')

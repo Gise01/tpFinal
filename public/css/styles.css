@@ -34,13 +34,19 @@ div#product, div#category, div#brand {
 
 /*------- Admin -------*/
 
-.productsAdmin{
+.productsAdmin,
+.brandsAdmin,
+.categoriesAdmin
+{
     
     background-color: white;
 }
 
-#imageBrand{
+#imageBrand,
+#imageProduct,
+#imageCategory
+{
     
-    width: 50px;
+    width: 70px;
     
 }

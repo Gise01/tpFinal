@@ -43,7 +43,7 @@ class CategoriesAdminController extends Controller
         $reglas = [
             'name' => 'string|required',
             'description' => 'string|nullable',
-            'image' => 'image|requiered',
+            'image' => 'image|required',
         ];
 
         $mensaje = [

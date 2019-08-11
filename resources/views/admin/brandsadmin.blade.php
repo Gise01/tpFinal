@@ -12,8 +12,11 @@
         @foreach ($brands as $brand)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">
-                <img src="{{ Storage::url($brand->image) }}" class="card-img-top img-fluid img-thumbnail" alt="Responsive image">
                 
+                <div class="brandsAdmin">
+                    <img src="{{ Storage::url($brand->image) }}" class="card-img-top img-fluid img-thumbnail" alt="Responsive image">
+                </div>
+
                 <h3>{{$brand->name}}</h3>
 
                 <div class="card-body">     

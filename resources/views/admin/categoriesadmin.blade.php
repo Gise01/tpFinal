@@ -12,8 +12,11 @@
         @foreach ($categories as $category)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">
-                <img src="{{ Storage::url($category->image) }}" class="card-img-top" alt="">
                 
+                <div class="categoriesAdmin">
+                    <img src="{{ Storage::url($category->image) }}" class="card-img-top img-fluid img-thumbnail" alt="Responsive image">
+                </div>
+
                 <h3>{{$category->name}}</h3>
 
                 <div class="card-body">     
