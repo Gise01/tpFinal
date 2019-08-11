@@ -34,10 +34,7 @@ div#product, div#category, div#brand {
 
 /*------- Admin -------*/
 
-#card-body-admin{
-    display: flex;
-    justify-content: space-around;
+.productsAdmin{
+    
+    background-color: white;
 }
- a{
-     text-decoration: none;
- }

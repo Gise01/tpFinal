@@ -9,7 +9,7 @@
                     <h3>Dashboard</h3>
                 </div>
 
-                <div id="card-body-admin" class="card-body">
+                <div id="card-body" class="card-body text-center">
                     <a class="btn btn-outline-success btn-lg" href="{{ route('productosadmin') }}" role="button">Productos</a>
                     <a class="btn btn-outline-info btn-lg" href="{{ route('categoriasadmin') }}" role="button">Categorias</a>
                     <a class="btn btn-outline-warning btn-lg" href="{{ route('marcasadmin') }}" role="button">Marcas</a>

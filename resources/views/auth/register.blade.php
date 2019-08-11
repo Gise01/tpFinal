@@ -151,7 +151,7 @@
                         <div class="form-group row form-check">
                             <label for="suscription" class="col-md-4 col-form-label text-md-right"></label>
                             <input type="checkbox" class="form-check-input" id="exampleCheck1" name="terms" value="si">
-                            <label for="terms" class="form-check-label">{{ __('He leido y acepto los ') }}<a href="{{ asset ('storage.terminos.pdf')}}" target="_blank">términos y condiciones de uso</a></label>
+                            <label for="terms" class="form-check-label">{{ __('He leido y acepto los ') }}<a href="{{ asset ('storage/terminos.pdf')}}" target="_blank">términos y condiciones de uso</a></label>
 
                             
                                 
