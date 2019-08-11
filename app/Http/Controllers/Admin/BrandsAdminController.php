@@ -39,10 +39,24 @@ class BrandsAdminController extends Controller
      */
     public function show(Request $request)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'description' => 'string|nullable',
+            'image' => 'image|required',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $brand = new Brand();
         $brand->name = $request['name'];
         $brand->description = $request['description'];
-        $brand->image = $request->file('image')->store('public/brands'));
+        $brand->image = $request->file('image')->store('public/brands');
                 
         $brand->save();
         return redirect('admin/marcas');
@@ -69,11 +83,28 @@ class BrandsAdminController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'description' => 'string|nullable',
+            'image' => 'image|nullable',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $brand = Brand::find($id);
        
         $brand->name = $request['name'];
         $brand->description = $request['description'];
-        $brand->image = $request->file('image')->store('public/brands'));
+        
+        if ($request->hasFile('image')) {
+            $product->image = $request->file('image')->store('public/products');
+        }
         
         $brand->save();
         return redirect('admin/marcas');

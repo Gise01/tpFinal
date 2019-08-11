@@ -12,7 +12,7 @@
         @foreach ($brands as $brand)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">
-                <img src="{{ asset('storage/icononotebook.png') }}" class="card-img-top" alt="">
+                <img src="{{ Storage::url($brand->image) }}" class="card-img-top" alt="">
                 
                 <h3>{{$brand->name}}</h3>
 

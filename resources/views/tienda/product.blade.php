@@ -10,7 +10,7 @@
 <div id="product">
     
     <div class="card text-center" style="width: 18rem;">
-        <img src="{{ asset('storage/notebook.jpg') }}" class="card-img-top" alt="">
+        <img src="{{ Storage::url($product->image) }}" class="card-img-top" alt="">
         <h4>{{$product->name}}</h4>
 
         <div class="card-body">

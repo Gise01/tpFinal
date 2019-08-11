@@ -45,7 +45,11 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">Imagen</label>
 
                             <div class="col-md-6">
-                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="" autocomplete="image" autofocus>
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" autocomplete="image" autofocus>
+
+                                <div>
+                                    <img src="{{ Storage::url($category->image) }}" alt="50" sizes="" srcset="">
+                                </div>
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

@@ -20,6 +20,10 @@ Route::get('/install', function(){
     Artisan::call('storage:link');
 });
 
+Route::get('/migrar', function(){
+    Artisan::call('migrate');
+});
+
 Route::bind('product', function($id){
     return App\Product::find($id);
 });

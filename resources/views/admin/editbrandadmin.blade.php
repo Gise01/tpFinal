@@ -47,6 +47,10 @@
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ $brand->image }}" autocomplete="image" autofocus>
 
+                                <div>
+                                    <img src="{{ Storage::url($brand->image) }}" alt="50" sizes="" srcset="">
+                                </div>
+                                
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

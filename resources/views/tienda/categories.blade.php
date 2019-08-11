@@ -12,7 +12,7 @@
     @foreach ($categories as $category)
 
         <div id="category-foreach" class="card text-center" style="width: 18rem;">
-            <a href="{{ route('categoria_productos', $category->id) }}"></a><img src="{{ asset('storage/acces.jpg') }}" class="card-img-top" alt=""></a>
+            <a href="{{ route('categoria_productos', $category->id) }}"></a><img src="{{ Storage::url($category->image) }}" class="card-img-top" alt=""></a>
         
             <h3>{{$category->name}}</h3>
 

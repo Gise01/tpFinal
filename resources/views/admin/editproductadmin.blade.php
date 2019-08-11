@@ -88,9 +88,11 @@
 
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" autocomplete="image" autofocus>
-                            <div>
-                                <img src="" alt="50" sizes="" srcset="">
-                            </div>
+                            
+                                <div>
+                                    <img src="{{ Storage::url($product->image) }}" alt="50" sizes="" srcset="">
+                                </div>
+                                
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

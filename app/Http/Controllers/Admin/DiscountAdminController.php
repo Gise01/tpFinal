@@ -37,6 +37,19 @@ class DiscountAdminController extends Controller
      */
     public function show(Request $request)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'value' => 'string|required',
+            'description' => 'string|nullable',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $discount = new Discount();
         $discount->name = $request['name'];
         $discount->value = $request['value']; 
@@ -66,6 +79,19 @@ class DiscountAdminController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'value' => 'string|required',
+            'description' => 'string|nullable',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $discount = Discount::find($id);
        
         $discount->name = $request['name'];

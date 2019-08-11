@@ -40,6 +40,20 @@ class CategoriesAdminController extends Controller
      */
     public function show(Request $request)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'description' => 'string|nullable',
+            'image' => 'image|requiered',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $category = new Category();
         $category->name = $request['name'];
         $category->description = $request['description'];
@@ -69,6 +83,20 @@ class CategoriesAdminController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'description' => 'string|nullable',
+            'image' => 'image|nullable',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $category = Category::find($id);
        
         $category->name = $request['name'];

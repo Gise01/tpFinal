@@ -44,6 +44,29 @@ class ProductsAdminController extends Controller
      */
     public function show(Request $request)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'sku' => 'string|required|unique:products,sku',
+            'price' => 'numeric|required|min:0',
+            'description' => 'string|nullable',
+            'stock' => 'numeric|required',
+            'image' => 'image|required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'discount_id' => 'required',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'unique' => 'El campo :attribute se encuentra repetido',
+            'numeric' => 'El campo :attribute debe ser un numero',
+            'min' => 'El campo :attribute tiene un minimo de :min',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $product = new Product();
         $product->name = $request['name'];
         $product->sku = $request['sku'];
@@ -101,6 +124,29 @@ class ProductsAdminController extends Controller
     
      public function edit(Request $request, $id)
     {
+        $reglas = [
+            'name' => 'string|required',
+            'sku' => 'string|required|unique:products,sku',
+            'price' => 'numeric|required|min:0',
+            'description' => 'string|nullable',
+            'stock' => 'numeric|required',
+            'image' => 'image|nullable',
+            'category_id' => 'nullable',
+            'brand_id' => 'nullable',
+            'discount_id' => 'nullable',
+        ];
+
+        $mensaje = [
+            'string' => 'El campo :attribute debe ser un texto',
+            'required' => 'El campo :attribute debe es requerido',
+            'unique' => 'El campo :attribute se encuentra repetido',
+            'numeric' => 'El campo :attribute debe ser un numero',
+            'min' => 'El campo :attribute tiene un minimo de :min',
+            'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
+        ];
+        
+        $this->validate($req, $reglas, $mensaje);
+        
         $product = Product::find($id);
        
         $product->name = $request['name'];
