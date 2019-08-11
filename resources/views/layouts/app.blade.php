@@ -16,7 +16,7 @@
         
     
     @include('partials.footer')
-    
+    <script src="{{ asset('js/country.js') }}"></script>
     </body>
 
 </div>
