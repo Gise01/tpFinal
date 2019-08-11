@@ -71,7 +71,7 @@ Route::post('/marcas/agregar', 'BrandsAdminController@show')->name('marcasadminp
 Route::get('/marcas/borrar/{id}', 'BrandsAdminController@predelete')->name('borrarmarcasadminget');
 Route::post('/marcas/borrar/{id}', 'BrandsAdminController@delete')->name('borrarmarcasadminpost');
 Route::get('/marcas/editar/{id}', 'BrandsAdminController@predit')->name('editarmarcasadminget');
-Route::post('/marcas/editar/{id}', 'BrandsAdminController@edit')->name('editarrmarcasadminpost');
+Route::post('/marcas/editar/{id}', 'BrandsAdminController@edit')->name('editarmarcasadminpost');
 
 Route::get('/categorias', 'CategoriesAdminController@index')->name('categoriasadmin');
 Route::get('/categorias/agregar', 'CategoriesAdminController@share')->name('categoriasadminget');
