@@ -101,7 +101,10 @@ class CategoriesAdminController extends Controller
        
         $category->name = $request['name'];
         $category->description = $request['description'];
-        $category->image = $request->file('image')->store('public/categories');
+
+        if ($request->hasFile('image')) {
+            $category->image = $request->file('image')->store('public/categories');
+        }
         
         $category->save();
         return redirect('admin/categorias');

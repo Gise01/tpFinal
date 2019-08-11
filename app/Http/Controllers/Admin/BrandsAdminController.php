@@ -83,8 +83,6 @@ class BrandsAdminController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        $brand = Brand::find($id);
-        
         $reglas = [
             'name' => 'string|required',
             'description' => 'string|nullable',
@@ -99,12 +97,13 @@ class BrandsAdminController extends Controller
         
         $this->validate($request, $reglas, $mensaje);
         
+        $brand = Brand::find($id);
                
         $brand->name = $request['name'];
         $brand->description = $request['description'];
         
         if ($request->hasFile('image')) {
-            $product->image = $request->file('image')->store('public/products');
+            $brand->image = $request->file('image')->store('public/brands');
         }
         
         $brand->save();
