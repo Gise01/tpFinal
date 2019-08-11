@@ -23,7 +23,7 @@ class CreateCartsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('discount_id')->references('id')->on('discounts');
-            $table->foreign('payment_id')->references('id')->on('payment');
+            $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
 
