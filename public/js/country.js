@@ -3,7 +3,7 @@ window.onload = function() {
     console.log(selectCountry);
       
     function cargarCountry() {
-      fetch('https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre')
+      fetch('https://restcountries.eu/rest/v2/all')
       .then(function(responseAPI) {
         return responseAPI.json();
       })
@@ -12,7 +12,7 @@ window.onload = function() {
         selectCountry.innerHTML = `
           <option value="" disabled selected>Seleccione un País...</option>
         `;
-        for(let country of respuestaCountry.provincias) {
+        for(let country of dataAPI) {
           let optionCountry = document.createElement('option');
           optionCountry.setAttribute('value', country.name);
           optionCountry.innerHTML = country.name;
