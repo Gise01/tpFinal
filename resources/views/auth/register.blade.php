@@ -74,7 +74,7 @@
 
                             <div class="col-md-6">
                                 <select id="country" class="form-control @error('country') is-invalid @enderror" name="country" value="{{ old('country') }}" required autocomplete="country" autofocus>
-                                    <option value="ejemplo">prueba</option>
+                                    
                                 </select>
                                 @error('country')
                                     <span class="invalid-feedback" role="alert">

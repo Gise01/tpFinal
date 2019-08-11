@@ -27,7 +27,7 @@ window.onload = function() {
   
     
   
-    cargarProvincias();
+    cargarCountry();
     selectCountry.addEventListener('change', function() {
       let countryElegido = selectCountry.value;
 
