@@ -3,7 +3,7 @@ window.onload = function() {
     console.log(selectCountry);
       
     function cargarCountry() {
-      fetch(getJSON('https://restcountries.eu/rest/v2/all'))
+      fetch('https://restcountries.eu/rest/v2/all')
       .then(function(responseAPI) {
         return responseAPI.json();
       })
