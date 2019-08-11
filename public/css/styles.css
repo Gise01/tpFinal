@@ -38,3 +38,9 @@ div#product, div#category, div#brand {
     
     background-color: white;
 }
+
+#imageBrand{
+    
+    width: 50px;
+    
+}
