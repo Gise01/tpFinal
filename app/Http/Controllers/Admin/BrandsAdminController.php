@@ -51,7 +51,7 @@ class BrandsAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $brand = new Brand();
         $brand->name = $request['name'];
@@ -95,7 +95,7 @@ class BrandsAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $brand = Brand::find($id);
        

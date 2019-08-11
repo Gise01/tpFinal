@@ -65,7 +65,7 @@ class ProductsAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $product = new Product();
         $product->name = $request['name'];
@@ -145,7 +145,7 @@ class ProductsAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $product = Product::find($id);
        

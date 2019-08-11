@@ -48,7 +48,7 @@ class DiscountAdminController extends Controller
             'required' => 'El campo :attribute debe es requerido',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $discount = new Discount();
         $discount->name = $request['name'];
@@ -90,7 +90,7 @@ class DiscountAdminController extends Controller
             'required' => 'El campo :attribute debe es requerido',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $discount = Discount::find($id);
        

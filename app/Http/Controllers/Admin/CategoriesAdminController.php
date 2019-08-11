@@ -52,7 +52,7 @@ class CategoriesAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $category = new Category();
         $category->name = $request['name'];
@@ -95,7 +95,7 @@ class CategoriesAdminController extends Controller
             'image' => 'El campo :attribute solo acepta formatos jpeg, png, bmp, gif, svg, o webp',
         ];
         
-        $this->validate($req, $reglas, $mensaje);
+        $this->validate($request, $reglas, $mensaje);
         
         $category = Category::find($id);
        
