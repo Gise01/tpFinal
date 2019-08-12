@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-    <div class="card-deck">
+    <div id="brands">
     
     @foreach ($brands as $brand)
 
@@ -28,7 +28,11 @@
     @endforeach
     </div>
 
-    {{$brands->links()}}
+    <div class="text-center">
+        <div>
+            {{$brands->links()}}
+        </div>
+    </div>
 </div>
 
 @endsection

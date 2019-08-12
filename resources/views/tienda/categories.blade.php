@@ -7,7 +7,7 @@
 </div>
     
 <div class="container">
-    <div class="card-deck">
+    <div id="categories">
 
     @foreach ($categories as $category)
 
@@ -28,7 +28,9 @@
         
     </div>
 
-    {{$categories->links()}}
+    <div class="text-center">
+        {{$categories->links()}}
+    </div>
 
 </div>
 

@@ -17,7 +17,7 @@
       <img src="{{ asset('storage/Slide3.jpg') }}" class="d-block w-100" alt="Slide 3">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('storage/Slide4.jpg') }}" class="d-block w-100" alt="Slide 4">
+      <img src="{{ asset('storage/Slide4.') }}" class="d-block w-100" alt="Slide 4">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -30,35 +30,39 @@
   </a>
 </div>
 
-<div class="card-deck">
-    <div class="card-header text-center">
-        <h3>Categorias</h3>
-    </div>
-
-    @foreach ($categories as $category)
-    <div class="card">
-        <a href="{{ route('categoria_productos', $category->id) }}"><img id="indexCategory" src="{{ Storage::url($category->image) }}" class="card-img-top" alt="categorias"></a>
-    
-        <div class="card-body">
-          <h5 class="card-title">{{$category->name}}</h5>
+<div class="container">
+    <div class="categories">
+        <div class="card text-center">
+            <h3>Categorias</h3>
         </div>
+
+        @foreach ($categories as $category)
+        <div class="card-body">
+            <a href="{{ route('categoria_productos', $category->id) }}"><img id="indexCategory" src="{{ Storage::url($category->image) }}" class="card-img-top" alt="categorias"></a>
+        
+            <div class="card-body">
+            <h5 class="card-title">{{$category->name}}</h5>
+            </div>
+        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
-<div class="card-deck">
-    <div class="card-header text-center">
-        <h3>Productos Destacados</h3>
-    </div>
-    @foreach ($products as $product)
-    <div class="card">
-        <a href="{{ route('detalle', $product->id) }}"><img id="indexProduct" src="{{ Storage::url($product->image) }}" class="card-img-top" alt="categorias"></a>
-    
-        <div class="card-body">
-          <h5 class="card-title">{{$product->name}}</h5>
+<div class="container">
+    <div class="products">
+        <div class="card text-center">
+            <h3>Productos Destacados</h3>
         </div>
+        @foreach ($products as $product)
+        <div class="card">
+            <a href="{{ route('detalle', $product->id) }}"><img id="indexProduct" src="{{ Storage::url($product->image) }}" class="card-img-top" alt="categorias"></a>
+        
+            <div class="card-body">
+            <h5 class="card-title">{{$product->name}}</h5>
+            </div>
+        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 @endsection
