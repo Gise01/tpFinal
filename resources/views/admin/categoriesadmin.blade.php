@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-    <div class="card-deck">
+    <div class="card-deck" style="width: 18rem;">
     
         @foreach ($categories as $category)
 
@@ -29,7 +29,10 @@
             
         @endforeach
     </div>
-    {{$categories->links()}}
+    
+    <div class="text-center">
+        {{$categories->links()}}
+    </div>
 </div>
 
 @endsection

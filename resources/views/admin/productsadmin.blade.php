@@ -6,7 +6,7 @@
 </div>
 
 <div class="container">
-    <div class="card-deck">
+    <div class="card-deck" style="width: 18rem;">
     
         @foreach ($products as $product)
 
@@ -29,6 +29,9 @@
         @endforeach
     </div>
 
-    {{$products->links()}}
+    <div class="text-center">
+        {{$products->links()}}
+    </div>
+
 </div>
 @endsection
