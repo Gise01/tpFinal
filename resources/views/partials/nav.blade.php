@@ -74,4 +74,3 @@
   </nav>
 </div>
         
-<img src="{{ asset('storage/logo.png') }}" class="img-fluid rounded mx-auto d-block" alt="Responsive image">

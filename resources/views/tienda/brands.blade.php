@@ -7,7 +7,7 @@
 </div>
 
 <div class="container">
-    <div id="brands">
+    <div class="card-deck">
     
     @foreach ($brands as $brand)
 

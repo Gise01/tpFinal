@@ -6,9 +6,9 @@
     <h2>Productos marca {{$brand->name}}</h2>
 </div>
     
-<<div class="container">
-    <div id="brands">
-    
+<div class="container">
+    <div class="card-deck">
+        
         @foreach ($products as $product)
 
             <div id="product-foreach" class="card text-center" style="width: 18rem;">

@@ -75,5 +75,3 @@
                 
   </nav>
 </div>
-        
-<img src="{{ asset('storage/logo.png') }}" class="rounded mx-auto d-block">

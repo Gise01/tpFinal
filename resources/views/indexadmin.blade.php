@@ -1,6 +1,10 @@
 @extends('layouts.appadmin')
 
 @section('content')
+
+<img src="{{ asset('storage/logo.png') }}" class="img-fluid rounded mx-auto d-block" alt="Responsive image">
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
