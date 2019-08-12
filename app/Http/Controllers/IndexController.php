@@ -15,8 +15,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $categories = Category::take(3);
-        $products= Product::where('stock', '>', '25')->take(3);
+        $categories = Category::paginate(3);
+        $products= Product::where('stock', '>', '25')->paginate(3);
         return view('index', compact('categories', 'products'));
     }
 

@@ -8,16 +8,16 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{ asset('storage/Slide1.png') }}" class="d-block w-100" alt="Slide 1">
+      <img src="{{ asset('storage/Slide1.jpg') }}" class="d-block w-100" alt="Slide 1">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('storage/Slide2.png') }}" class="d-block w-100" alt="Slide 2">
+      <img src="{{ asset('storage/Slide2.jpg') }}" class="d-block w-100" alt="Slide 2">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('storage/Slide3.png') }}" class="d-block w-100" alt="Slide 3">
+      <img src="{{ asset('storage/Slide3.jpg') }}" class="d-block w-100" alt="Slide 3">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('storage/Slide4.png') }}" class="d-block w-100" alt="Slide 4">
+      <img src="{{ asset('storage/Slide4.jpg') }}" class="d-block w-100" alt="Slide 4">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
