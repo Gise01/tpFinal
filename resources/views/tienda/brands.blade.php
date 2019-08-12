@@ -29,9 +29,7 @@
     </div>
 
     <div class="text-center">
-        <div>
-            {{$brands->links()}}
-        </div>
+        {{$brands->links()}}
     </div>
 </div>
 
