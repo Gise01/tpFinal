@@ -56,7 +56,7 @@ class CartController extends Controller
         $cart[$product->id] = $product;
         Session::put('cart', $cart);
 
-        return redirect()->route('productos');
+        return redirect()->route('carrito');
     }
 
     public function delete (Product $product)
@@ -78,7 +78,7 @@ class CartController extends Controller
     public function update(Product $product, $quantity)
     {       
         $cart = Session::get('cart');
-        $cart[$product->id]->quantity = $quantity;
+        ($cart[$product->id])->quantity = $quantity;
         Session::put('cart', $cart);
         dd($cart, $product, $quantity);
         return redirect()->route('carrito');
