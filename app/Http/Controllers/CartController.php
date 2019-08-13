@@ -15,7 +15,7 @@ class CartController extends Controller
      */
     public function __construct()
     {
-        if(!\Session::has('cart')) \Session::put('cart', array());
+        if(!Session::has('cart')) Session::put('cart', array());
     }
 
     /**
@@ -36,7 +36,7 @@ class CartController extends Controller
      */
     public function show()
     {
-        $cart = \Session::get('cart');
+        $cart = Session::get('cart');
         $total = $this->total(); 
         return view('tienda.cart', compact('cart', 'total'));
         
@@ -50,19 +50,19 @@ class CartController extends Controller
      */
     public function add(Product $product)
     {
-        $cart = \Session::get('cart');
+        $cart = Session::get('cart');
         $product->quantity = 1;
         $cart[$product->id] = $product;
-        \Session::put('cart', $cart);
+        Session::put('cart', $cart);
 
         return redirect()->route('productos');
     }
 
     public function delete (Product $product)
     {
-        $cart = \Session::get('cart');
+        $cart = Session::get('cart');
         unset($cart[$product->id]);
-        \Session::put('cart', $cart);
+        Session::put('cart', $cart);
 
         return redirect()->route('carrito');
     }
@@ -76,9 +76,9 @@ class CartController extends Controller
      */
     public function update(Product $product, $quantity)
     {       
-        $cart = \Session::get('cart');
+        $cart = Session::get('cart');
         $cart[$product->id]->quantity = $quantity;
-        \Session::put('cart', $cart);
+        Session::put('cart', $cart);
         dd($cart, $product, $quantity);
         return redirect()->route('carrito');
     }
@@ -91,7 +91,7 @@ class CartController extends Controller
      */
     private function total()
     {
-        $cart = \Session::get('cart');
+        $cart = Session::get('cart');
         $total = 0;
         foreach ($cart as $item){
             $total += $item->price * $item->quantity;
@@ -108,7 +108,7 @@ class CartController extends Controller
      */
     public function remove()
     {
-        \Session::forget('cart');
+        Session::forget('cart');
         
         return redirect()->route('carrito');
     }
