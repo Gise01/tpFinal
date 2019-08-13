@@ -39,7 +39,7 @@ Route::get('/cart', 'CartController@show')->name('carrito');
 Route::get('/cart/add/{product}', 'CartController@add')->name('agregar');
 Route::get('/cart/delete/{product}', 'CartController@delete')->name('eliminar');
 Route::get('/cart/remove}', 'CartController@remove')->name('vaciar');
-Route::get('/cart/update/{id}/{quantity}', 'CartController@update')->name('update');
+Route::get('/cart/update/{id}/{quantity?}', 'CartController@update')->name('update');
 Route::get('/cart/payment/', 'CartController@payment')->name('pago')->middleware('guest');
 
 Route::get('/categories', 'CategoryController@index')->name('categorias');
