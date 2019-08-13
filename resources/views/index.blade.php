@@ -17,7 +17,7 @@
       <img src="{{ asset('storage/Slide3.jpg') }}" class="d-block w-100" alt="Slide 3">
     </div>
     <div class="carousel-item">
-      <img src="{{ asset('storage/Slide4.') }}" class="d-block w-100" alt="Slide 4">
+      <img src="{{ asset('storage/Slide4.jpg') }}" class="d-block w-100" alt="Slide 4">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -58,7 +58,7 @@
     </div>
       
     <div class="container">
-        <div id="categories">
+        <div id="products">
 
         @foreach ($products as $product)
             <div id="category-foreach" class="card text-center" style="width: 18rem;">

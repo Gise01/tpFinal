@@ -1,5 +1,5 @@
 window.onload=function(){
-    document.getElementById('pruebo').addEventListener('click', function(event){
+    document.querySelector('btn-update-item').addEventListener('click', function(event){
         event.preventDefault();
 
         let id = this.data('id');

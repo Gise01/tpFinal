@@ -61,3 +61,17 @@ div#brand
 {
     border-radius: 50%;
 }
+
+
+/*------- Carrito -------*/
+
+.table-cart{
+    border-radius: 1em;
+    background-color: aliceblue;
+    padding: 1em;
+    margin-bottom: 30px;
+}
+
+.table-cart img{
+    width: 50px;
+}
