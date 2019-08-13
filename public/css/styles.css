@@ -75,3 +75,7 @@ div#brand
 .table-cart img{
     width: 50px;
 }
+
+#total-cart{
+    color: rgb(104, 102, 102);
+}

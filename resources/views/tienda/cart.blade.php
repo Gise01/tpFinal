@@ -53,7 +53,7 @@
             </table>
             
             <p>
-                <h4><span>Total: $ {{ $total }}</span></h4>
+                <h4 id=total-cart><span>Total: $ {{ $total }}</span></h4>
             </p>
 
             <p>

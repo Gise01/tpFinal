@@ -75,11 +75,11 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Product $product, $quantity)
-    {
+    {       
         $cart = \Session::get('cart');
         $cart[$product->id]->quantity = $quantity;
         \Session::put('cart', $cart);
-
+        dd($cart, $product, $quantity);
         return redirect()->route('carrito');
     }
 
