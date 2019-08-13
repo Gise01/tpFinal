@@ -1,5 +1,5 @@
 window.onload=function(){
-    document.querySelector('btn-update-item').addEventListener('click', function(event){
+    document.querySelector('.btn-update-item').addEventListener('click', function(event){
         event.preventDefault();
 
         let id = this.data('id');
@@ -7,5 +7,12 @@ window.onload=function(){
         let quantity = ("#product_" + id).val();
 
         window.location.href = href + "/" + quantity;
+
+        console.log(id);
+        console.log(href);
+        console.log(quantity);
+        
+        
+        
     });
 };
